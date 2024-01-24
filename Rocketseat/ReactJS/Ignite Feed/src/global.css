@@ -9,6 +9,13 @@
     --gray-900: #121214;
   
     --green-500: #00875f;
+    --green-300: #00B37E; 
+}
+
+:focus { 
+    outline: transparent; 
+    /* tira o focus que fica com coisa branca  */
+    box-shadow: 0 0 0 2px var(--green-300);
 }
 
 *{
