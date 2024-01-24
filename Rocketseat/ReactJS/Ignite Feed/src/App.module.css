@@ -1,0 +1,10 @@
+.wrapper{
+    max-width: 70rem; /* juntou as duas larguras dos posts + aside e dividiu para chegar nesse valor*/
+    margin: 2rem auto; /*estudar isso*/
+    padding: 0 1rem; 
+
+    display: grid; 
+    grid-template-columns: 256px /*aside*/ 1fr /*timeline*/;
+    gap: 2rem; /*espaço entre aside e main de 32px*/
+    align-items: flex-start; /*alinhado ao topo para aside não esticar para ficar do mesmo tamanho do post*/
+}
