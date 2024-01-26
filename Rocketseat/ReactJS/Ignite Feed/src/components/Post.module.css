@@ -1,26 +1,27 @@
 .post{
     background: var(--gray-800); 
-    border-radius: 8px; 
-    padding: 2.5rem; /*colocar em px para treinar*/
+    border-radius: 8px; /*Utilizando em uma pequena parte que não vai alterar a tela inteira ou fazer grandes diferenças a página dependendo do monitor*/
+    padding: 2.5rem; /*40px*/
 }
 
-/* Comentário: Ctrl + K + Ctrl + C seguidos para crir uma aba de comentários como está*/
+/* Comentário: Ctrl + K + Ctrl + C seguidos para criar uma aba de comentários como está*/
+
 
 .post +  .post {  
-   margin-top: 2rem; 
-   /* 32px */
+    /* Todo o post que contém outro post antes dele, evitando colocar estilização em páginas com apenas um post ou sem nenhum post antes*/
+   margin-top: 2rem; /* 32px */
 }
 
-/* Todo o post que contém outro post antes dele, evitando colocar estilização em páginas com apenas um post ou sem nenhum post antes */
 
 .content { 
     line-height: 1.6; 
     color: var(--gray-300); 
-    margin-top: 1.5rem; 
+    margin-top: 1.5rem; /* 24px = 16px + 8px 
+    0,5 = 8px*/
 }
 
 .content p { 
-    margin-top: 1rem; 
+    margin-top: 1rem; /* 16px */
 }
 
 .content a {
@@ -34,27 +35,29 @@
 }
 
 .post > header {
+  /* Só o header no primeiro nivel/vem primeiro e só o que está no post, para evitar confundir com o outro header. É possivel também criar um nome próprio também */
    display: flex; 
    align-items: center;
    justify-content: space-between;
 }
 
-/* Só a no primeiro nivel e só a que está no post, para evitar confundir com o outro header. É possivel também criar um nome próprio também */
+
 
 .post > header time {
-    font-size: 0.875rem; 
+    font-size: 0.875rem; /* 14px */
     color: var(--gray-400); 
 }
 
 .author {
     display: flex; 
     align-items: center;
-    gap: 1rem; 
+    gap: 1rem; /* 16px */
 }
 
 .author img { 
-    width: calc(3rem + 12px); /*ESTUDAR ESSES CALCULOS LOUCOS*/
-    height: calc(3rem + 12px);  /*tamanhos na tela utiliza rem mas se não utiliza px, depende do dev*/
+    width: calc(3rem + 12px); 
+    height: calc(3rem + 12px);  
+    /*tamanhos na tela utiliza rem mas se não utiliza px, depende do dev*/
     border-radius: 8px; 
     border: 4px solid var(--gray-800); 
     outline: 2px solid var(--green-500);
@@ -79,8 +82,8 @@
 
 .commentForm{
     width: 100%; 
-    margin-top: 1.5rem; 
-    padding-top: 1.5rem; 
+    margin-top: 1.5rem; /* 24px */
+    padding-top: 1.5rem; /* 24px */
     border-top: 1px solid var(--gray-600); 
 }
 
@@ -94,8 +97,8 @@
     background: var(--gray-900); 
     border: 0; 
     resize: none; 
-    height: 6rem; 
-    padding: 1rem; 
+    height: 6rem; /* 96px */
+    padding: 1rem; /* 16px */
     border-radius: 8px; 
     color: var(--gray-100); 
     line-height: 1.4;
@@ -103,17 +106,15 @@
 }
 
 .commentForm footer { 
-  
     /* O button não aparecer e nem ocupar espaço no post */
    visibility: hidden;
    max-height: 0;
 }
 
- /* Aparecer o botão só quando a textarea tiver selecionada */
 .commentForm:focus-within footer { 
+     /* Aparecer o botão só quando a textarea tiver selecionada */
     visibility: visible;
     max-height: none;
-/* pesquisar sobre essa tag */
 }
 
 
