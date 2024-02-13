@@ -57,14 +57,12 @@
     height: 50px; 
     padding: 0 1.5rem; 
     font-weight: bold; 
-    display: block; 
     text-decoration: none; 
 
     display: flex; 
     align-items: center; 
     justify-content: center;
 
-    /* pq dois display? é correto? */
     gap: 0.5rem; 
 
     transition: color 0.1s, background-color 0.1s; 
