@@ -16,9 +16,10 @@ export function Post({author, publishedAt, content}){
 
      // estado > variaveis que você quer que seja monitoradas 
     const [comments, setComments] = useState([
-        1, 
-        2,
+       "Post muito bacana, hein"
     ])
+
+    const [newCommentText, setNewCommentText] = useState('')
 
     
 // utilizando uma extensão do proprio JS para melhorar datas 
@@ -45,8 +46,20 @@ export function Post({author, publishedAt, content}){
         function handleCreateNewComment() {
             event.preventDefault(); 
 
-            setComments([...comments, comments.lengh + 1]); 
+            // const newCommentText = event.target.comment.value
+
+            setComments([...comments, newCommentText]); 
+            // comentário não ficar ali depois de comentado
+            setNewCommentText('');
         }
+
+      function handleNewCommentChange(){
+        setNewCommentText(event.target.value);
+      }
+
+      function deleteComment(comment){
+          console.log(`Deletar comentário ${comment}`)
+      }
 
     return (
         <article className={styles.post}>
@@ -70,9 +83,9 @@ export function Post({author, publishedAt, content}){
             {/* percorrendo arrays paa chegar ao conteúdo */}
             {content.map(line => {
                 if ( line.type === 'paragraph') {
-                    return <p>{line.content}</p>
+                    return <p key={line.content}>{line.content}</p>
                 } else if ( line.type === 'link'){ 
-                    return <p><a  href='#'>{line.content}</a></p>
+                    return <p key={line.content}><a  href='#'>{line.content}</a></p>
                 }
             })}
              <p> 
@@ -86,7 +99,10 @@ export function Post({author, publishedAt, content}){
               <strong>Deixe seu feedback</strong>
 
               <textarea
+                name="comment"
                 placeholder='Deixe um comentário'
+                value={newCommentText}
+                onChange={handleNewCommentChange}
               ></textarea>
 
               <footer>
@@ -96,7 +112,13 @@ export function Post({author, publishedAt, content}){
 
            <div className={styles.commentList}>
                {comments.map(comment => {
-                 return <Comment></Comment>
+                // a key com o próprio texto do comentário pois não temos id 
+                 return <Comment 
+                 key={comment}
+                 content={comment} 
+                 onDeleteComment={deleteComment}
+                 ></Comment>
+                  //ENSINAMENTO MAIS IMPORTANATE DO REACT: um componente se comunica com outro por propriedade | passando uma função de um componente pai como propriedade para o componente filho
                })}
            </div>
         </article>

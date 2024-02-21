@@ -2,7 +2,16 @@ import { ThumbsUp, Trash } from 'phosphor-react'
 import styles from './Comment.module.css'
 import { Avatar } from './Avatar'
 
-export function Comment (){
+export function Comment ({content}){
+     
+    function handleDeleteComment({ content, OnDeleteComment }){
+       // console.log('deletar')
+
+       //ENSINAMENTO MAIS IMPORTANATE DO REACT: um componente se comunica com outro por propriedade | passando uma função de um componente pai como propriedade para o componente filho
+
+       OnDeleteComment(content); 
+    }
+
     return (
         <div className={styles.comment}>
           <Avatar hasBorder={false} src="https://pbs.twimg.com/profile_images/1602025996265422849/5n677swY_400x400.jpg" />
@@ -17,11 +26,13 @@ export function Comment (){
                         >Cerca de 1h atrás</time>
                     </div>
 
-                    <button title="Deletar comentário">
+                    <button 
+                      onClick={handleDeleteComment}
+                      title="Deletar comentário">
                         <Trash size={24}></Trash>
                     </button>
                 </header>
-                <p>Muito bom, Dev. Parabéns!! </p>
+                <p>{content}</p>
             </div>
             <footer>
                 <button>
