@@ -54,12 +54,25 @@ export function Post({author, publishedAt, content}){
         }
 
       function handleNewCommentChange(){
+        event.target.setCustomValidity(""); 
         setNewCommentText(event.target.value);
       }
 
-      function deleteComment(comment){
-          console.log(`Deletar comentário ${comment}`)
+      function handleNewCommentInvalid(){ 
+        event.target.setCustomValidity("Esse campo é obrigatório!"); 
+        
+    }
+
+      function deleteComment(commentToDelete){
+        // imutabilidade -> as variaveis não sofrem mutação, nos criamos um novo valor ( um novo espaço na mémoria) -- é mais rápido para o react ver o que mudou e comparar em duas versões por exemplo do que alterar o valor origional que ai eu não vou ter o que comparar
+          const commentsWithoutDeletedOne = comments.filter(comment => {
+            return comment !== commentToDelete; 
+          }) 
+          setComments(commentsWithoutDeletedOne);
+          //para apagar algo da lista de comentários
       }
+
+      const isNewCommentEmpty = newCommentText.length === 0; 
 
     return (
         <article className={styles.post}>
@@ -103,10 +116,15 @@ export function Post({author, publishedAt, content}){
                 placeholder='Deixe um comentário'
                 value={newCommentText}
                 onChange={handleNewCommentChange}
+                onInvalid={handleNewCommentInvalid}
+                required
               ></textarea>
 
               <footer>
-              <button type='submit'>Publicar</button>
+              <button 
+              type='submit' 
+              disabled={isNewCommentEmpty} >Publicar</button>
+              {/* ajuda criar variaveis para uma manutenção melhor para um código clean */}
               </footer>
            </form>
 
@@ -120,6 +138,7 @@ export function Post({author, publishedAt, content}){
                  ></Comment>
                   //ENSINAMENTO MAIS IMPORTANATE DO REACT: um componente se comunica com outro por propriedade | passando uma função de um componente pai como propriedade para o componente filho
                })}
+               {/* array.map(item ⇒ <p>{item}</p>) */}
            </div>
         </article>
     )

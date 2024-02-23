@@ -1,15 +1,25 @@
 import { ThumbsUp, Trash } from 'phosphor-react'
 import styles from './Comment.module.css'
 import { Avatar } from './Avatar'
+import { useState } from 'react';
 
-export function Comment ({content}){
+export function Comment ({content, onDeleteComment}){
+    const [likeCount, setLikeCount] = useState(0);
      
-    function handleDeleteComment({ content, OnDeleteComment }){
+    function handleDeleteComment(){
        // console.log('deletar')
 
        //ENSINAMENTO MAIS IMPORTANATE DO REACT: um componente se comunica com outro por propriedade | passando uma função de um componente pai como propriedade para o componente filho
 
-       OnDeleteComment(content); 
+       onDeleteComment(content); 
+    }
+
+    function handleLikeComment(){
+        setLikeCount(likeCount + 1);
+        //likes que eu já tenho mais um para adicionar na tela
+        //para ter os valores atualizados em tela: criar variaveis para armazenar esse valor novo ou fazer um function array
+        // sempre que for atualizar uma informação, e essa informação depende dela mesma, é sempre bom fazer o padrão abaixo: 
+        //setLikeCount((state) => { return state + 1})
     }
 
     return (
@@ -35,10 +45,12 @@ export function Comment ({content}){
                 <p>{content}</p>
             </div>
             <footer>
-                <button>
-                    <ThumbsUp></ThumbsUp> 
+                <button onClick={handleLikeComment}>
+                    {/* se colocar do lado handleLikeComment() ele vai executar sem esperar o onClick pois seria uma função EXECUTAVEL e entraria em loop*/}
                     {/* Relembrar como coloquei essa biblioteca de icones */}
-                    Aplaudir <span>20</span>
+                    <ThumbsUp></ThumbsUp> 
+                    
+                    Aplaudir <span>{likeCount}</span>
                 </button>
             </footer>
           </div>
