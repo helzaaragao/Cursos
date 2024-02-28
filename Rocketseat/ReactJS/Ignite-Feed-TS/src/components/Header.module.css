@@ -1,0 +1,10 @@
+.header { 
+    background: var(--gray-800);
+    display: flex; 
+    justify-content: center; /*tem que estudar o pq fica no centro normal: utliza o padding e o negocio de vertial e horizontal*/
+    padding: 1.25rem 0; 
+}
+
+.header img { 
+    height: 2rem; 
+}

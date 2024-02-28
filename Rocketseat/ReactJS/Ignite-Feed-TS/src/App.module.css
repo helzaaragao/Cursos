@@ -1,0 +1,21 @@
+.wrapper{
+    max-width: 70rem; /* juntou as duas larguras dos posts + aside e dividiu para chegar nesse valor*/
+    margin: 2rem auto; /*estudar isso*/
+    padding: 0 1rem; 
+
+    display: grid; 
+    grid-template-columns: 256px /*aside*/ 1fr /*timeline*/;
+    gap: 2rem; /*espaço entre aside e main de 32px*/
+    align-items: flex-start; /*alinhado ao topo para aside não esticar para ficar do mesmo tamanho do post*/
+}
+
+@media (max-width: 768px){ 
+    html {
+        font-size: 87.5%; 
+        /* 14px mas está percentual para continuar sendo responsivo com o navegador da pessoa e a fonte que eles tem */
+    }
+    .wrapper { 
+        grid-template-columns: 1fr; 
+        /* colocando apenas uma coluna para mobiles */
+    }
+}
