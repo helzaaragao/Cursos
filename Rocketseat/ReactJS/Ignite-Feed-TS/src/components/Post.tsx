@@ -3,7 +3,7 @@ import { Comment } from './Comment'
 import styles from './Post.module.css'
 
 import { format, formatDistanceToNow } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
+import { ptBR } from 'date-fns/locale/pt-BR';
 
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 
@@ -39,7 +39,7 @@ interface PostProps {
 
 //{author, publisedAt} = objetos precisam de umz tipagem inteira e não de cada informação, faz uma interface para esse objeto inteiro 
 
-export function Post({author, publishedAt, content}: PostProps){
+export function Post({ post }: PostProps){
 
      // estado > variaveis que você quer que seja monitoradas 
     const [comments, setComments] = useState([
@@ -58,15 +58,15 @@ export function Post({author, publishedAt, content}: PostProps){
     // }).format(publisheadAt); 
 
 //outra forma de lidar com datas é baixando date-fns
-     const publisheadDateFormatted = format(publishedAt, 
+     const publisheadDateFormatted = format(post.publishedAt, 
         "d 'de' LLLL 'ás' HH:mm'h'", {
-            locale: ptBR, 
-        })
+            locale: ptBR,
+        });
 
-        const publishedDateRelativeToNow = formatDistanceToNow ( publishedAt, {
+        const publishedDateRelativeToNow = formatDistanceToNow ( post.publishedAt, {
             locale: ptBR, 
             addSuffix: true,
-        })
+        });
 
         //evemt não é nada para o TypeScript 
 
@@ -114,7 +114,7 @@ export function Post({author, publishedAt, content}: PostProps){
                    </div>
             </div>
             <time 
-               title={post.publisheadDateFormatted}
+               title={publisheadDateFormatted}
                dateTime={post.publishedAt.toISOString()}>
                  {publishedDateRelativeToNow}
                 </time>

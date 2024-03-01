@@ -41,8 +41,6 @@ export function Post({author, publishedAt, content}){
             addSuffix: true,
         })
 
-       
-
         function handleCreateNewComment() {
             event.preventDefault(); 
 

@@ -22,6 +22,8 @@ export function Comment ({content, onDeleteComment}){
         //setLikeCount((state) => { return state + 1})
     }
 
+    //TypeScript: deixa o seu editor mais inteligênte e faz uma tipagem que faz ter menos erro no código antes de aplicar
+
     return (
         <div className={styles.comment}>
           <Avatar hasBorder={false} src="https://pbs.twimg.com/profile_images/1602025996265422849/5n677swY_400x400.jpg" />
