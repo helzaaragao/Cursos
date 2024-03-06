@@ -1,0 +1,8 @@
+.newtask{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; 
+    transform: translateY(-50%);
+    margin-bottom: 2.3125rem;
+}

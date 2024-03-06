@@ -28,6 +28,7 @@
 :focus {
     outline:transparent; 
     /* colocar uma box-shadow aqui talvez */
+    /* box-shadow: 0 0 0 2px  */
 }
 
 body, 
