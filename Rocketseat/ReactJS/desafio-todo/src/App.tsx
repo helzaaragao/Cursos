@@ -4,8 +4,11 @@ import { Header } from '../src/components/Header'
 import { Input } from './components/Input'
 import { Button } from './components/Button'
 import {Header as ListHeader } from './components/List/Header'
+import { Empty } from './components/List/Empty'
 
 import {PlusCircle} from '@phosphor-icons/react';
+import { Task } from './components/List/Task'
+
 
 export interface ITask { 
   id: number, 
@@ -17,6 +20,13 @@ export function App() {
 
   const [inputValue, setInputValue] = useState(''); 
   const [tasks, setTasks] = useState<ITask[]>([]);
+
+  const checkedTasksCounter = tasks.reduce((prevValue, currentTask) => {
+    if(currentTask.isChecked){
+      return prevValue + 1
+    }
+    return prevValue
+  }, 0)
 
   function handleAddTask(){
      if(!inputValue){ 
@@ -32,6 +42,19 @@ export function App() {
      setTasks((state => [...state, newTask]))
      setInputValue(''); 
 
+  }
+
+  function handleRemoveTask(id: number){
+    const filteredTask = tasks.filter((task) => task.id !== id)
+
+    if(!confirm('Deseja mesmo apagar essa tarefa?')){ 
+      return 
+    }
+    setTasks(filteredTask)
+  }
+
+  function handleToggleTask(){
+    
   }
 
   return (
@@ -53,9 +76,26 @@ export function App() {
         
         <div className={style.taskList}>
          <ListHeader 
-         taskCounter={0} 
-         checkedTaskCounter={0} ></ListHeader>
+         taskCounter={tasks.length} 
+         checkedTaskCounter={checkedTasksCounter} 
+         ></ListHeader>
+
+         {tasks.length > 0 ? (
+          <div>
+            {tasks.map((task) => (
+                <Task
+                key={task.id}
+                data={task}
+                removeTask={handleRemoveTask}
+                toggleTaskStatus={handleToggleTask}
+                ></Task>
+            ))}
+         )}
+
+        
+         <Empty></Empty>
         </div>
+    
 
      </section>
     </>
