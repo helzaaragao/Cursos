@@ -24,8 +24,8 @@ export function Task({data, removeTask, toggleTaskStatus}: Props){
     const paragraphCheckedClassName = data.isChecked ? style['paragraph-checked'] 
     : ''
     return (
-        <main>
-            <div>
+        <main className={style.newTasks}>
+            <div className={style.check}>
               <label 
               htmlFor="checkbox" 
               onClick={handleTaskToggle}>
@@ -49,7 +49,7 @@ export function Task({data, removeTask, toggleTaskStatus}: Props){
             </div>
             <button onClick={handleRemove}>
                 <Trash 
-                size={13} 
+                size={18} 
                 color="#808080" 
                 ></Trash>
             </button>

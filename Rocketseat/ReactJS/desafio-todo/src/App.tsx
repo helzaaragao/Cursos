@@ -53,12 +53,27 @@ export function App() {
     setTasks(filteredTask)
   }
 
-  function handleToggleTask(){
+  function handleToggleTask({id, value}: {id: number, value:boolean}){
+    const updatedTasks = tasks.map((task) => { 
+      if(task.id === id){
+        return {...task, isChecked: value}
+      }
+      return {...task }
+    })
+
+    setTasks(updatedTasks)
     
   }
 
+  // function handleKeyDown(e: { key: string; preventDefault: () => void }) { 
+  //   if(e.key === 'Enter'){
+  //     e.preventDefault(); 
+  //     handleAddTask();
+  //   }
+  // }
+
   return (
-    <>
+    <main>
      <Header></Header>
      
      <section className={style.content}>
@@ -70,6 +85,7 @@ export function App() {
 
           <Button
            onClick={handleAddTask}
+          //  onKeyDown={handleKeyDown}
           > Criar <PlusCircle size={16} />
           </Button>
         </div>
@@ -90,15 +106,13 @@ export function App() {
                 toggleTaskStatus={handleToggleTask}
                 ></Task>
             ))}
-         )}
-
-        
+            </div>
+         ): ( 
          <Empty></Empty>
+        )}    
         </div>
-    
-
      </section>
-    </>
+    </main>
   )
 }
 

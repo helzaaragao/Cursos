@@ -2,7 +2,7 @@
     display: flex; 
     justify-content: space-between;
     text-align: center;
-    
+    margin-bottom: 2rem;
 }
 
 .ListHeader aside {
@@ -22,7 +22,7 @@
 .ListHeader aside span { 
     color: var(--gray-100);
     background-color: var(--gray-400);
-    width: 2rem;
+    max-width: 4rem;
     height: 1.3rem; 
     border-radius: 1rem;
    
