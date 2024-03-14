@@ -1,6 +1,6 @@
 .newTasks{ 
     max-width: 46rem;
-    height: 4.5rem;
+    height: 3.5rem;
     display: flex; 
     align-items: center;
     justify-content:space-between;
@@ -14,19 +14,71 @@
 
 .check label { 
     display: flex; 
-    gap: 0.5rem; 
+    gap: 0.6rem; 
+    align-items: center;
+   
 }
 
 
-.check label input{ 
+.check label input[type='checkbox']{ 
+    display: none; 
+}
+
+.checkbox {
     width: 1.5rem; 
     height: 1.5rem;
-    border-radius: 50%;
+    border-radius: 100%;
+    transition: 0.2s all;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
 }
+
+.checkbox-unchecked { 
+    border: 2px solid var(--blue);
+}
+
+.checkbox-unchecked:hover { 
+    background-color: var(--blue-dark);
+    
+    
+}
+
+.checkbox-checked {
+    border: 2px solid var(--purple-dark);
+    background-color: var(--purple-dark);
+  }
+
+.checkbox-checked:hover {
+    border: 2px solid var(--purple);
+    background-color: var(--purple);
+}
+
+.paragraph-checked {
+    text-decoration: line-through;
+    color: var(--gray-300);
+  }
+  
 
 
 .newTasks button{
     background: transparent;
     border: none;
+    display: flex; 
+
+}
+
+.newTasks button:hover { 
+    background-color: var(--gray-400);
+    border-radius: 0.25rem;
+}
+
+button line, button path {
+    transition: 0.2s fill;
+}
+
+button:hover line, button:hover path  { 
+    fill: var(--danger);
+
 }
 

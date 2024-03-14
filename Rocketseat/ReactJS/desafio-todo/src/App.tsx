@@ -85,7 +85,6 @@ export function App() {
 
           <Button
            onClick={handleAddTask}
-          //  onKeyDown={handleKeyDown}
           > Criar <PlusCircle size={16} />
           </Button>
         </div>

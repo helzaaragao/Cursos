@@ -49,7 +49,7 @@ export function Task({data, removeTask, toggleTaskStatus}: Props){
             </div>
             <button onClick={handleRemove}>
                 <Trash 
-                size={18} 
+                size={20} 
                 color="#808080" 
                 ></Trash>
             </button>
