@@ -14,7 +14,7 @@ import {
   TaskInput,
   StopCountdownButton,
 } from './styles.ts'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext, useContext } from 'react'
 import { NewCycleForm } from './components/NewCycleForm/index.tsx'
 import { CountDown } from './components/CountDown/index.tsx'
 // import { useState } from 'react'
@@ -38,15 +38,7 @@ import { CountDown } from './components/CountDown/index.tsx'
 //    minutesAmount: number
 // }
 
-const newCycleFormValidationSchema = zod.object({
-  task: zod.string().min(1, 'Informe a tarefa'),
-  minutesAmount: zod
-    .number()
-    .min(5)
-    .max(60, 'O ciclo precisa ser de no máximo 60 minutos'),
-})
 
-type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
 
 interface Cycle {
   id: string
@@ -57,58 +49,22 @@ interface Cycle {
   finishedDate?: Date
 }
 
+interface CyclesContextType { 
+   activeCycle: Cycle | undefined
+   activeCycleId: string | null
+}
+
+export const CyclesContext = createContext({} as CyclesContextType)
+
 // formato dos ciclos
 
 export function Home() {
   const [cycles, setCycles] = useState<Cycle[]>([])
 
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
-  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
+  
 
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
-  const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
-
-  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
-    resolver: zodResolver(newCycleFormValidationSchema),
-    defaultValues: {
-      task: '',
-      minutesAmount: 0,
-    },
-  })
-
-  useEffect(() => {
-    let interval: number
-    if (activeCycle) {
-      interval = setInterval(() => {
-        const secondsDifference = differenceInSeconds(
-          new Date(),
-          activeCycle.starDate,
-        )
-        if (secondsDifference >= totalSeconds) {
-          setCycles((state) =>
-            state.map((cycle) => {
-              if (cycle.id === activeCycle) {
-                return { ...cycle, finishedDate: new Date() }
-              } else {
-                return cycle
-              }
-            }),
-          )
-
-          setAmountSecondsPassed(totalSeconds)
-
-          clearInterval(interval)
-        } else {
-          setAmountSecondsPassed(secondsDifference)
-        }
-      }, 1000)
-    }
-
-    return () => {
-      // deletar os intervalos que eu não preciso mais
-      clearInterval(interval)
-    }
-  }, [activeCycle, totalSeconds, activeCycleId])
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const id = String(new Date().getTime())
@@ -161,11 +117,20 @@ export function Home() {
   const task = watch('task')
   const isSubmitDisabled = !task
 
+  /*
+  Prop Drilling -> Quando a gente tem MUITAS propriedades APENAS para comunicação entre componentes
+  tem mais de 3 propriedades para um componente só, começa a ficar complicado para dá manutenção
+  O que resolve é Context API --> permite compartilhamos informações entre vários compoenntes ao mesmo tempo, como se fosse informações globais que todos tem acesso 
+  */
+
   return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
-      <NewCycleForm></NewCycleForm>
-      <CountDown></CountDown>
+      <CyclesContext.Provider value={{activeCycle}}>
+        <NewCycleForm></NewCycleForm>
+        <CountDown></CountDown>
+      </CyclesContext.Provider>
+    
        
 
         {activeCycle ? (
