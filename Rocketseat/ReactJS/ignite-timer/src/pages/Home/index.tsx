@@ -8,9 +8,10 @@ import {
   StartCountdownButton,
   StopCountdownButton,
 } from './styles.ts'
-import { useState, createContext } from 'react'
+import { useContext } from 'react'
 import { NewCycleForm } from './components/NewCycleForm/index.tsx'
 import { CountDown } from './components/CountDown/index.tsx'
+import { CyclesContext } from '../../contexts/CyclesContext.tsx'
 
 // controlled (mantem em tempo real controle do que o usuario está digitando ou fazendo em uma variavel | toda vez atualiza quando utilizada e pode ser um peso ao sistema em certos momentos/ uncontrolled ( você não ver em tempo real mas fica sem atualizar tudo quando utilizada e atualiza apenas uma vez)
 
@@ -29,11 +30,6 @@ import { CountDown } from './components/CountDown/index.tsx'
 //    minutesAmount: number
 // }
 
-
-
-
-
-
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa'),
   minutesAmount: zod
@@ -47,11 +43,8 @@ type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
 // formato dos ciclos
 
 export function Home() {
-  const [cycles, setCycles] = useState<Cycle[]>([])
-
-  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
-  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
-
+  const { activeCycle, createNewCycle, interruptCycle } =
+    useContext(CyclesContext)
   const newCycleForm = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
     defaultValues: {
@@ -62,59 +55,15 @@ export function Home() {
 
   const { handleSubmit, watch, reset } = newCycleForm
 
-  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
-
-  function setSecondsPassed(seconds: number) {
-    setAmountSecondsPassed(seconds)
-  }
-
-  function markCurrentCycleAsFinished() {
-    setCycles((state) =>
-      state.map((cycle) => {
-        if (cycle.id === activeCycleId) {
-          return { ...cycle, finishedDate: new Date() }
-        } else {
-          return cycle
-        }
-      }),
-    )
-  }
-
-  function handleCreateNewCycle(data: NewCycleFormData) {
-    const id = String(new Date().getTime())
-
-    const newCycle: Cycle = {
-      id,
-      task: data.task,
-      minutesAmount: data.minutesAmount,
-      starDate: new Date(),
-    }
-    setCycles((state) => [...state, newCycle])
-    setActiveCycleId(id)
-    setAmountSecondsPassed(0)
-
-    // alterando o estado é assim em formato de função porque ta mudando
-    reset()
-  }
-
-  function handleInterruptCycle() {
-    setCycles((state) =>
-      state.map((cycle) => {
-        if (cycle.id === activeCycleId) {
-          return { ...cycle, interruptedDate: new Date() }
-        } else {
-          return cycle
-        }
-      }),
-    )
-
-    setActiveCycleId(null)
-  }
-
   // converter o numero de minutos em segundos pois a aplicação vai precisar
 
   const task = watch('task')
   const isSubmitDisabled = !task
+
+  function handleCreateNewCycle(data: NewCycleFormData) {
+    createNewCycle(data)
+    reset()
+  }
 
   /*
   Prop Drilling -> Quando a gente tem MUITAS propriedades APENAS para comunicação entre componentes
@@ -125,16 +74,14 @@ export function Home() {
   return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
-       
-          <FormProvider {...newCycleForm}>
-            <NewCycleForm></NewCycleForm>
-          </FormProvider>
+        <FormProvider {...newCycleForm}>
+          <NewCycleForm></NewCycleForm>
+        </FormProvider>
 
-          <CountDown></CountDown>
-      
+        <CountDown></CountDown>
 
         {activeCycle ? (
-          <StopCountdownButton onClick={handleInterruptCycle} type="button">
+          <StopCountdownButton onClick={interruptCycle} type="button">
             <HandPalm size={24}></HandPalm>
             Interromper
           </StopCountdownButton>

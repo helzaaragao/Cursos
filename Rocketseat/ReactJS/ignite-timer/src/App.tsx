@@ -3,25 +3,15 @@ import { BrowserRouter } from 'react-router-dom'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 import { Router } from './Router'
-import { CyclesContext } from './pages/Home'
-import { createContext } from 'react'
-
+import { CyclesContextProvider } from './contexts/CyclesContext'
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-      <CyclesContext.Provider
-          value={{
-            activeCycle,
-            activeCycleId,
-            markCurrentCycleAsFinished,
-            amountSecondsPassed,
-            setSecondsPassed,
-          }}
-        >
-        <Router></Router>
-        </CyclesContext.Provider>
+        <CyclesContextProvider>
+          <Router></Router>
+        </CyclesContextProvider>
       </BrowserRouter>
       {/* botões com estilos diferentes ( cores e etc) */}
       <GlobalStyle></GlobalStyle>
