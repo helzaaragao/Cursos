@@ -16,10 +16,6 @@ export const HomeContainer = styled.main`
   }
 `
 
-
-
-
-
 export const BaseCountdownButton = styled.button`
   width: 100%;
   border: 0;
@@ -40,17 +36,14 @@ export const BaseCountdownButton = styled.button`
     opacity: 0.7;
     cursor: not-allowed;
   }
-
- 
 `
 
 export const StartCountdownButton = styled(BaseCountdownButton)`
- background: ${(props) => props.theme['green-500']};
+  background: ${(props) => props.theme['green-500']};
 
   &:not(:disabled):hover {
     background: ${(props) => props.theme['green-700']};
   }
-
 `
 
 export const StopCountdownButton = styled(BaseCountdownButton)`
