@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 130%;
     }
 
-
+/* crl + ; |\ fazer comentários */
     
 
 `
