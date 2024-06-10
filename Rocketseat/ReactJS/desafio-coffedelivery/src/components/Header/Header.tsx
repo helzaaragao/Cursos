@@ -1,4 +1,5 @@
 import logo from '../../assets/logo.svg'
+import { CepPrompt } from '../CepPrompt'
 
 // setValue ('nome dado por mim', varivael.tanto)
 // ideia: colocar um prompt quando abrir o site para pedir cep e utilizar ele no campo que pede
@@ -6,10 +7,15 @@ import logo from '../../assets/logo.svg'
 // pesquisar prompt no react no youtube | mas eu acho que em qualquer lugar funciona e é primeira coisa a abrir, talvez não precise de uma pasta para isso seila
 
 export function Header() { 
-   <header>
-    <img src={logo} />
-     <div>
-        <p>{texto que vai ser definido ainda}</p>
-     </div>
-   </header>
+   return(
+ 
+      <header>
+      <img src={logo} />
+     
+       <div>
+       <CepPrompt></CepPrompt>
+       </div>
+     </header>
+   )
+  
 }
