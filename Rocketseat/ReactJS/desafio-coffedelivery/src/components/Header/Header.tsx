@@ -1,21 +1,24 @@
 import logo from '../../assets/logo.svg'
-import { CepPrompt } from '../CepPrompt'
+import { MapPin, ShoppingCart } from '@phosphor-icons/react'
+import { HeaderContainer } from './style'
 
-// setValue ('nome dado por mim', varivael.tanto)
-// ideia: colocar um prompt quando abrir o site para pedir cep e utilizar ele no campo que pede
-// https://www.npmjs.com/package/react-router-prompt testar
-// pesquisar prompt no react no youtube | mas eu acho que em qualquer lugar funciona e é primeira coisa a abrir, talvez não precise de uma pasta para isso seila
+// Link|  aside | div | Link
 
 export function Header() { 
+
    return(
- 
-      <header>
+      <HeaderContainer>
       <img src={logo} />
-     
-       <div>
-       <CepPrompt></CepPrompt>
-       </div>
-     </header>
+        <nav>
+         <div>
+         <MapPin size={32} weight='fill'></MapPin>
+         <span>Fortaleza,CE</span>
+         </div>
+         <div>
+            <ShoppingCart size={32} weight='fill'></ShoppingCart>
+         </div>
+        </nav>
+     </HeaderContainer>
    )
   
 }
