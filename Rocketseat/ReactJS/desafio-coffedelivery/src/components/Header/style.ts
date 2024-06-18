@@ -9,17 +9,44 @@ export const HeaderContainer = styled.header`
 
     nav{
         display: flex; 
-        gap: 1.5rem; 
+        gap: 1rem; 
         align-items: center;
         justify-content: center;
 
        div{ 
             width:8.938rem; 
             height: 2.375rem;
-            background-color: ${({ theme }) => theme['purple-light']};
+            gap: 0.2rem; 
             display: flex; 
             align-items: center;
             justify-content: center;
+            background-color: ${({ theme }) => theme['purple-light']};
+            border-radius: 6px;
+
+            svg{
+                color:  ${({ theme }) => theme['purple']};
+            }
+
+            span {
+            font-size: 14px;
+            line-height: 130%;
+            color:  ${({ theme }) => theme['purple-dark']};
+           }
+          
+        } 
+
+        a { 
+            width:2.375rem; 
+            height: 2.375rem; 
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            background-color: ${({ theme }) => theme['yellow-light']};
+            border-radius: 6px;
+
+            svg{
+                color:  ${({ theme }) => theme['yellow-dark']};
+            }
         }
     }
 `

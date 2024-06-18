@@ -5,8 +5,11 @@ import { Home } from "./pages/Home/Home";
 export function Router(){
     return(
         <Routes>
-            <Route path="/" element={<DefaultLayout></DefaultLayout>}></Route>
-            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/" element={<DefaultLayout></DefaultLayout>}>
+            
+               <Route path="/" element={<Home></Home>}></Route>
+
+            </Route>
         </Routes>
     )
 }
