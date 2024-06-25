@@ -15,6 +15,7 @@ export const CoffeeBanner = styled.section`
 export const CoffeeBannerContent = styled.div`
     display: flex; 
     gap: 2rem; 
+  
 `
 
 export const Heading = styled.div`
@@ -67,7 +68,12 @@ export const Info = styled.div`
 
 export const CoffeeList = styled.section`
    
-
+   > div {
+     display: grid; 
+     grid-template-columns: 1fr 1fr 1fr 1fr;
+     grid-row-gap: 3rem; 
+     grid-column-gap: 2rem;
+   }
 `
 
 // Coloca padding no global porque vai ser para todos

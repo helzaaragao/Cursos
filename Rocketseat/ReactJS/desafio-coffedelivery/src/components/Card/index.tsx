@@ -1,19 +1,41 @@
-export function Card() {
+import { CardContainer, CoffeImg, Description, Tags, Title} from "./style"
 
-    type Props = { 
+  type Props = { 
         coffee: {
             id: string
             title: string
             description: string
-            tags: strings[]
+            tags: string[]
             price: number
             image: string
         }
     }
+
+export function Card({coffee}: Props) {
     return(
-        <>
-        <p>Card aqui</p>
+        <CardContainer>
+            <CoffeImg src={coffee.image} alt={coffee.title}></CoffeImg>
+
+            <Tags>
+                {coffee.tags.map((tag) => (
+                <span 
+                key={tag}>
+                    {tag} 
+                 </span>
+                ))}
+            </Tags>
+
+            <Title>
+                {coffee.title}
+            </Title>
+
+            <Description>
+                {coffee.description}
+            </Description>
+
+            
+       
         
-        </>
+        </CardContainer>
     )
 }
