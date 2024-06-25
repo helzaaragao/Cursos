@@ -1,8 +1,12 @@
 import { ShoppingCart, Package, Coffee, Timer } from '@phosphor-icons/react'
 import { CoffeeBanner, CoffeeBannerContent, CoffeeList, Heading, Info } from './styles'
 import coffeBanner from '../../assets/coffeBanner.svg'
+import { useTheme } from 'styled-components'
+import { Card } from '../../components/Card'
 
 export function Home(){ 
+  const theme = useTheme()
+
     return(
         <main>
            <CoffeeBanner>
@@ -16,25 +20,32 @@ export function Home(){
                            <div>
                             <ShoppingCart
                              size={25} 
-                             weight='fill'></ShoppingCart>
+                             weight='fill'
+                             style={{ backgroundColor:theme['yellow-dark'], color: theme['base-background']}}></ShoppingCart>
                             <span>Compra simples e segura</span>
-                           </div>
-                           <div>
-                           <Timer
-                             size={25} 
-                             weight='fill'></Timer>
-                            <span>Entrega rápida e rastreada</span>
                            </div>
                            <div>
                            <Package
                              size={25} 
-                             weight='fill'></Package>
+                             weight='fill'
+                             style={{ backgroundColor:theme['base-text'], color: theme['base-background']}}
+                             ></Package>
                             <span>Embalagem mantém o café intacto</span>
+                           </div>
+                           <div>
+                           <Timer
+                              size={25} 
+                             weight='fill'
+                             style={{ backgroundColor:theme['yellow'], color: theme['base-background']}}
+                             ></Timer>
+                            <span>Entrega rápida e rastreada</span>
                            </div>
                            <div>
                            <Coffee
                              size={25} 
-                             weight='fill'></Coffee>
+                             weight='fill'
+                             style={{ backgroundColor:theme['purple'], color: theme['base-background']}}
+                             ></Coffee>
                             <span>O café chega fresquinho até você</span>
                            </div>
                         </Info>
@@ -47,7 +58,14 @@ export function Home(){
            </CoffeeBanner>
            
            <CoffeeList>
-
+              <h2>Nossos cafés</h2>
+               
+               <section>
+                <Card></Card>
+                   {/* {CoffeeList.map((coffee) => (
+                     
+                   ))} */}
+               </section>
            </CoffeeList>
         </main>
     )
