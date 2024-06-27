@@ -67,6 +67,8 @@ export const Info = styled.div`
 `
 
 export const CoffeeList = styled.section`
+     padding: 1rem 8rem 1rem 8rem; 
+     margin-top: 2.5rem; 
    
    > div {
      display: grid; 
