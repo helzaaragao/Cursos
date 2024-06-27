@@ -69,6 +69,16 @@ export const Info = styled.div`
 export const CoffeeList = styled.section`
      padding: 1rem 8rem 1rem 8rem; 
      margin-top: 2.5rem; 
+
+     h2 {
+        font-family: 'Baloo 2', sans-serif;
+        font-weight: bolder;
+        font-size: 2rem;
+        line-height: 130%;
+        margin-bottom: 1.2rem;
+
+        color:  ${({ theme }) => theme['base-subtitle']};
+     }
    
    > div {
      display: grid; 

@@ -82,7 +82,7 @@ export function Card({coffee}: Props) {
             <Control>
                 <Price>
                     <span>R$</span>
-                    <span>{coffee.price.toFixed(2)}</span>
+                    <strong>{coffee.price.toFixed(2)}</strong>
                 </Price>
 
                 <Order $itemAdded={isItemAdded}>
