@@ -21,7 +21,7 @@ import { useTheme } from "styled-components"
 
 export function Card({coffee}: Props) {
     const [isItemAdded, setIsItemAdded] = useState(false)
-    const [quantity, setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(0)
     const theme = useTheme()
     // const { addItem } = useCart()
 
