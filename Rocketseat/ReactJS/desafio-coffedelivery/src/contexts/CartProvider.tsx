@@ -1,3 +1,5 @@
+// import { Item } from "../reducers/reducer"
+
 // interface CartContextType {
 //     cart: Item[]
 //     orders: Order[]
