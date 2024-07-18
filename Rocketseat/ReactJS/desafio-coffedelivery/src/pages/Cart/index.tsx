@@ -2,11 +2,13 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TextInput } from "../../components/Form/TextInput";
-import { AddressContainer, CartContainer, CoffeesSelected, 
-    FinalInfos, PaymentContainer } from "./style";
-import { MapPin } from "@phosphor-icons/react";
+import { AddressContainer, CartContainer, CoffeesOptions, CoffeesSelected, 
+    FinalInfos, PaymentContainer, 
+    PaymentHeading,
+    PaymentOptions} from "./style";
+import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons/react";
 import { useCart } from "../../hooks/useCart";
-
+import { Radio } from "../../components/Radio";
 
 type FormInputs = {
     cep: number
@@ -45,12 +47,18 @@ const newOrder = z.object({
 //     }
 // }
 
+
+
+
 export function Cart() {
     const {
         register, handleSubmit, watch, formState: {errors}, 
     } = useForm<FormInputs>({
         resolver: zodResolver(newOrder), 
     })
+
+    const selectedPaymentMethod = watch('paymentMethod')
+    
     return(
         <CartContainer>
             <FinalInfos>
@@ -121,12 +129,50 @@ export function Cart() {
                   
                 </AddressContainer>
                 <PaymentContainer>
-                    
+                <PaymentHeading>
+                <CurrencyDollar size={22} ></CurrencyDollar>
+                <h3>Pagamento</h3>
+                <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar</span>
+                </PaymentHeading>
+                <PaymentOptions>
+                    <Radio
+                      isSelected={selectedPaymentMethod === 'credit'}
+                      {...register('paymentMethod')}
+                      value="credit"
+                    >
+                        <CreditCard size={16}></CreditCard>
+                        <span>Cartão de crédito</span>
+                    </Radio>
+
+                    <Radio
+                      isSelected={selectedPaymentMethod === 'debit'}
+                      {...register('paymentMethod')}
+                      value="debit"
+                    >
+                        <Bank size={16}></Bank>
+                         <span>Cartão de débito</span>
+                    </Radio>
+
+                     <Radio
+                      isSelected={selectedPaymentMethod === 'cash'}
+                      {...register('paymentMethod')}
+                      value="cash"
+                    >
+                        <Money size={16}></Money>
+                        <span>Dinheiro</span>
+                    </Radio>
+
+                </PaymentOptions>
                 </PaymentContainer>
                 </form>
             </FinalInfos>
            
-            <CoffeesSelected></CoffeesSelected>
+            <CoffeesSelected>
+                <h2>Cafés selecionados</h2>
+                <CoffeesOptions>
+                    
+                </CoffeesOptions>
+            </CoffeesSelected>
         </CartContainer>
     )
 }
