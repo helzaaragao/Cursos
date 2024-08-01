@@ -2,13 +2,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TextInput } from "../../components/Form/TextInput";
-import { AddressContainer, CartContainer, CoffeesOptions, CoffeesSelected, 
+import { AddressContainer, AddressForm, AddressHeading, CartContainer, CoffeesOptions, CoffeesSelected, 
     FinalInfos, PaymentContainer, 
     PaymentHeading,
     PaymentOptions} from "./style";
-import { MapPin, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons/react";
+import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons/react";
 import { useCart } from "../../hooks/useCart";
 import { Radio } from "../../components/Radio";
+import { coffees } from '../../../data.json'
 
 type FormInputs = {
     cep: number
@@ -58,26 +59,39 @@ export function Cart() {
     })
 
     const selectedPaymentMethod = watch('paymentMethod')
+
+    // useCart precisa está pronto para essa aqui
+    // const coffesInCart = cart.map((item) => { 
+    //     const coffeeInfo = coffees.find((coffee) => coffee.id === item.id)
+
+    //     if(!coffeeInfo) { 
+    //         throw new Error('Invalid coffee.')
+    //     }
+    //     return { 
+    //         ...coffeeInfo, 
+    //         quantity: item.quantity, 
+    //     }
+    // })
     
     return(
         <CartContainer>
             <FinalInfos>
             <h2>Complete seu pedido</h2>
-
-            <form onSubmit={handleSubmit()}>
+{/* onSubmit={handleSubmit()} */}
+            <form>
                 <AddressContainer>
-                    <MapPin size={22}></MapPin> 
-                    <div>
-                   
+                <AddressHeading> 
+                    <MapPinLine size={22}></MapPinLine> 
+                    <div>      
                     <h3>Endereço de Entrega</h3>
                     <span>Informe o endereço onde deseja receber seu pedido</span>
                     </div>
-                    
-                   
-                        <TextInput
+                 </AddressHeading> 
+                 <AddressForm>
+                         <TextInput
                             placeholder='CEP'
                             type='number'
-                            containerProps={{style: {gridArea: 'cep'}}}
+                            containerProps={{style: { gridArea: 'cep' }}}
                             error={errors.cep}
                             {...register('cep', {valueAsNumber: true})}
                         ></TextInput>
@@ -126,8 +140,11 @@ export function Cart() {
                             {...register('state')}
                         ></TextInput>
 
+                 </AddressForm>
+                      
                   
                 </AddressContainer>
+
                 <PaymentContainer>
                 <PaymentHeading>
                 <CurrencyDollar size={22} ></CurrencyDollar>
@@ -170,6 +187,7 @@ export function Cart() {
             <CoffeesSelected>
                 <h2>Cafés selecionados</h2>
                 <CoffeesOptions>
+
                     
                 </CoffeesOptions>
             </CoffeesSelected>
