@@ -147,9 +147,11 @@ export function Cart() {
 
                 <PaymentContainer>
                 <PaymentHeading>
-                <CurrencyDollar size={22} ></CurrencyDollar>
-                <h3>Pagamento</h3>
-                <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar</span>
+                    <CurrencyDollar size={22}></CurrencyDollar>
+                    <div>
+                        <h3>Pagamento</h3>
+                        <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar</span>
+                    </div>
                 </PaymentHeading>
                 <PaymentOptions>
                     <Radio
