@@ -36,17 +36,21 @@ const newOrder = z.object({
 
 })
 
-// export function Cart() {
-//     const {
-//         cart
-//     } = useCart()
-// }
+export type OrderInfo = z.infer<typeof newOrder>
 
-// const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
-//     if(cart.length === 0) { 
-//         return alert("É preciso ter pelo menos um item no carrinho")
-//     }
-// }
+const shippingPrice = 3.5
+
+export function Cart() {
+    const {
+        cart
+    } = useCart()
+}
+
+const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
+    if(cart.length === 0) { 
+        return alert("É preciso ter pelo menos um item no carrinho")
+    }
+}
 
 
 
