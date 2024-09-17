@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useReducer } from "react"
+import { createContext, ReactNode, useEffect, useReducer } from "react"
 import { OrderInfo } from "../pages/Cart"
 import { cartReducer, Item, Order } from "../reducers/reducer"
 import { useNavigate } from "react-router-dom"
@@ -10,7 +10,7 @@ interface CartContextType {
     addItem: (item: Item) => void 
     removeItem: (itemId: Item['id']) => void
     decrementItemQuantity: (itemId: Item['id']) => void
-    incrmentItemQuantity: (itemId: Item['id']) => void
+    incrementItemQuantity: (itemId: Item['id']) => void
     checkout: (order: OrderInfo) => void
 }
 
@@ -35,12 +35,12 @@ export function CartContextProvider({children}: CartContextProviderProps) {
                 return JSON.parse(storedStateAsJSON)
             }
             return cartState
-        }.
+        },
     )
 
     const navigate = useNavigate()
 
-    const {cart, order} = cartState
+    const {cart, orders} = cartState
     
     function addItem(item: Item) { 
         dispatch(addItemAction(item))
@@ -55,8 +55,22 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         dispatch(decrementItemQuantityAction(itemId))
     }
     function checkout(order: OrderInfo) { 
-        dispatch(checkoutCartAction(order, navite))
+        dispatch(checkoutCartAction(order, navigate))
     }
-    <>
-    </>
+
+    useEffect(() => {
+        if(cartState){
+            const stateJSON = JSON.stringify(cartState)
+
+            localStorage.setItem('@coffee-delivery:cart-state-1.0.0', stateJSON)
+        }
+    }, [cartState])
+    return (
+            <CartContext.Provider
+                value={{addItem, cart, orders, incrementItemQuantity, decrementItemQuantity, removeItem, checkout,}}
+            >
+                {children}
+            </CartContext.Provider>
+    )
+   
 }

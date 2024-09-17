@@ -4,12 +4,18 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { TextInput } from "../../components/Form/TextInput";
 import { AddressContainer, AddressForm, AddressHeading, CartContainer, CoffeesOptions, CoffeesSelected, 
     FinalInfos, PaymentContainer, 
+    PaymentErrorMessage, 
     PaymentHeading,
-    PaymentOptions} from "./style";
-import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from "@phosphor-icons/react";
+    PaymentOptions, Coffee,
+    CoffeInfo,
+    CartTotalInfo,
+    CheckoutButton} from "./style";
+import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money, Trash} from "@phosphor-icons/react";
 import { useCart } from "../../hooks/useCart";
 import { Radio } from "../../components/Radio";
 import { coffees } from '../../../data.json'
+import { Fragment } from "react/jsx-runtime";
+import { QuantityInput } from "../../components/Form/QuantityInput";
 
 type FormInputs = {
     cep: number
@@ -42,47 +48,57 @@ const shippingPrice = 3.5
 
 export function Cart() {
     const {
-        cart
+        cart, checkout, 
+        incrementItemQuantity, decrementItemQuantity, 
+        removeItem,
     } = useCart()
-}
 
-const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
-    if(cart.length === 0) { 
-        return alert("É preciso ter pelo menos um item no carrinho")
-    }
-}
+    const coffeesInCart = cart.map((item) => {
+        const coffeeInfo = coffees.find((coffee) => coffee.id === item.id)
+        if (!coffeeInfo){
+            throw new Error('Invalid coffee.')
+        }
+        return { 
+            ...coffeeInfo, quantity: item.quantity,
+        }
+    })
 
+    const totalItemsPrice = coffeesInCart.reduce((prviousValue,currentItem) => { 
+        return (prviousValue += currentItem.price * currentItem.quantity)
+    }, 0)
 
-
-
-export function Cart() {
-    const {
-        register, handleSubmit, watch, formState: {errors}, 
+    const { 
+        register, handleSubmit, 
+        watch, formState:{ errors }, 
     } = useForm<FormInputs>({
         resolver: zodResolver(newOrder), 
     })
 
     const selectedPaymentMethod = watch('paymentMethod')
 
-    // useCart precisa está pronto para essa aqui
-    // const coffesInCart = cart.map((item) => { 
-    //     const coffeeInfo = coffees.find((coffee) => coffee.id === item.id)
+    function handleItemIncrement(itemId: string){
+        incrementItemQuantity(itemId)
+    }
+    function handleItemDecrement(itemId: string){
+        decrementItemQuantity(itemId)
+    }
+    function handleRemoveItem(itemId: string){
+        removeItem(itemId)
+    }
 
-    //     if(!coffeeInfo) { 
-    //         throw new Error('Invalid coffee.')
-    //     }
-    //     return { 
-    //         ...coffeeInfo, 
-    //         quantity: item.quantity, 
-    //     }
-    // })
-    
+    const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
+        if(cart.length === 0){
+            return alert('É preciso ter pelo menos um item no carrinho')
+        }
+        checkout(data)
+    }
+
     return(
         <CartContainer>
             <FinalInfos>
             <h2>Complete seu pedido</h2>
-{/* onSubmit={handleSubmit()} */}
-            <form>
+
+            <form id="order" onSubmit={handleSubmit(handleOrderCheckout)}>
                 <AddressContainer>
                 <AddressHeading> 
                     <MapPinLine size={22}></MapPinLine> 
@@ -185,6 +201,12 @@ export function Cart() {
                         <span>Dinheiro</span>
                     </Radio>
 
+                    {errors.paymentMethod ? (
+                        <PaymentErrorMessage role="alert">
+                         {errors.paymentMethod.message}
+                        </PaymentErrorMessage>
+                    ): null}
+
                 </PaymentOptions>
                 </PaymentContainer>
                 </form>
@@ -193,7 +215,67 @@ export function Cart() {
             <CoffeesSelected>
                 <h2>Cafés selecionados</h2>
                 <CoffeesOptions>
+                    {coffeesInCart.map((coffee) => (
+                        <Fragment key={coffee.id}>
+                            <Coffee>
+                                <div>
+                                    <img src={coffee.image} alt={coffee.title} />
+                                    <div>
+                                        <span>{coffee.title}</span>
+                                        <CoffeInfo>
+                                           <QuantityInput
+                                                quantity={coffee.quantity}
+                                                incrementQuantity={() => handleItemIncrement(coffee.id)}
+                                                decrementQuantity={() => handleItemDecrement(coffee.id)}
+                                           />
 
+                                           <button onClick={() => handleRemoveItem(coffee.id)}>
+                                                <Trash></Trash>
+                                                <span>Remover</span>
+                                           </button>
+                                        </CoffeInfo>
+                                    </div>
+                                </div>
+                                <aside>R$ {coffee.price?.toFixed(2)}</aside>
+                            </Coffee>
+                            <span></span>
+                        </Fragment>
+                    ))}
+
+                    <CartTotalInfo>
+                        <div>
+                            <span>Total de itens</span>
+                            <span>
+                             {new Intl.NumberFormat('pt-br', {
+                                currency: 'BRL', 
+                                style: 'currency'
+                             }).format(totalItemsPrice)}
+                            </span>
+                        </div>
+                        <div>
+                            <span>Entrega</span>
+                            <span>
+                             {new Intl.NumberFormat('pt-br', {
+                                currency: 'BRL', 
+                                style: 'currency'
+                             }).format(shippingPrice)}
+                            </span>
+                        </div>
+
+                        <div>
+                            <span>Total</span>
+                            <span>
+                             {new Intl.NumberFormat('pt-br', {
+                                currency: 'BRL', 
+                                style: 'currency'
+                             }).format(totalItemsPrice + shippingPrice)}
+                            </span>
+                        </div>                    
+                    </CartTotalInfo>
+
+                    <CheckoutButton type="submit" form="order">
+                        Confirmar Pedido
+                    </CheckoutButton>
                     
                 </CoffeesOptions>
             </CoffeesSelected>

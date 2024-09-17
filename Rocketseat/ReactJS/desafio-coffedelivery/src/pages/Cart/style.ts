@@ -98,3 +98,9 @@ export const PaymentOptions = styled.div`
 `
 export const CoffeesSelected = styled.section``
 export const CoffeesOptions = styled.div``
+export const Coffee = styled.div``
+export const CoffeInfo = styled.div``
+export const CartTotal = styled.div``
+export const CartTotalInfo = styled.div``
+export const CheckoutButton = styled.button``
+export const PaymentErrorMessage = styled.p``

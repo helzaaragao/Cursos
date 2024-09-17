@@ -9,7 +9,7 @@ export interface Item{
 
 export interface Order extends OrderInfo { 
     id: number
-    Items: Item[]
+    items: Item[]
 }
 
 interface CartState {
