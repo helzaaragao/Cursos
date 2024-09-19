@@ -1,29 +1,44 @@
 {
-    "transactions": [
-        {
-            "id": 1, 
-            "description": "Desenvolvimento de site", 
-            "type": "income", 
-            "category": "Venda", 
-            "price": 14000, 
-            "createAt": "2024-08-15T17:18:32.831Z"
-            
-        },
-        {
-            "id": 2, 
-            "description": "Hamburger", 
-            "type": "outcome", 
-            "category": "Alimentação", 
-            "price": 60, 
-            "createAt": "2024-08-15T17:00:32.831Z"
-        },
-        {
-            "id": 3, 
-            "description": "Ignite Rocketseat", 
-            "type": "outcome", 
-            "category": "Educação", 
-            "price": 1980, 
-            "createAt": "2024-08-15T17:02:00.831Z"
-        }
-    ]
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createAt": "2024-08-15T17:18:32.831Z"
+    },
+    {
+      "id": 2,
+      "description": "Hamburger",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 60,
+      "createAt": "2024-08-15T17:00:32.831Z"
+    },
+    {
+      "id": 3,
+      "description": "Ignite Rocketseat",
+      "type": "outcome",
+      "category": "Educação",
+      "price": 1980,
+      "createAt": "2024-08-15T17:02:00.831Z"
+    },
+    {
+      "description": "Contas de luz, água e internet",
+      "price": 300,
+      "category": "Casa",
+      "type": "outcome",
+      "createAt": "2024-09-19T14:32:35.250Z",
+      "id": 4
+    },
+    {
+      "description": "Saida com os amigos",
+      "price": 150,
+      "category": "Diversão",
+      "type": "outcome",
+      "createAt": "2024-09-19T15:03:26.313Z",
+      "id": 5
+    }
+  ]
 }
