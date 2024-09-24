@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState, useCallback } from 'react'
 import { api } from '../lib/auxios'
+import { createContext } from 'use-context-selector'
 
 interface Transaction {
   id: number
@@ -47,7 +48,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     setTransactions(response.data)
   }
 
-  async function createTransaction(data: CreateTransactionInput) {
+  const createTransaction = useCallback( 
+    async (data: CreateTransactionInput) => {
     const { description, price, category, type } = data
 
     const response = await api.post('transactions', {
@@ -56,11 +58,12 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       category,
       type,
       createAt: new Date(),
-      // o usuario pode criar uma nova transação usando o post
     })
-
     setTransactions((state) => [response.data, ...state])
-  }
+      // o usuario pode criar uma nova transação usando o post
+    },
+    [],
+  )
 
   useEffect(() => {
     fetchTransactions()
