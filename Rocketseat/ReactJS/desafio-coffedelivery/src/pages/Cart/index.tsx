@@ -63,8 +63,8 @@ export function Cart() {
         }
     })
 
-    const totalItemsPrice = coffeesInCart.reduce((prviousValue,currentItem) => { 
-        return (prviousValue += currentItem.price * currentItem.quantity)
+    const totalItemsPrice = coffeesInCart.reduce((previousValue,currentItem) => { 
+        return (previousValue += currentItem.price * currentItem.quantity)
     }, 0)
 
     const { 

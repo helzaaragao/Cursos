@@ -1,5 +1,5 @@
 import { Item } from "./reducer"
-import { OrderInfo } from '../pages/Cart/index'
+import { OrderInfo } from "../../pages/Cart"
 import { NavigateFunction } from 'react-router-dom'
 
 export enum ActionTypes { 

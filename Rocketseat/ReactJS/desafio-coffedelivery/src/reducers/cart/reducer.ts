@@ -1,6 +1,6 @@
 import { produce } from "immer"
 import { Actions, ActionTypes } from "./actions"
-import { OrderInfo } from "../pages/Cart"
+import { OrderInfo } from '../../pages/Cart'
 
 export interface Item{
     id: string 

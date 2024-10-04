@@ -6,7 +6,7 @@ import { Card } from '../../components/Card'
 import { coffees } from '../../../data.json'
 
 export function Home(){ 
-  const theme = useTheme()
+  const theme = useTheme();
 
     return(
         <main>
@@ -57,7 +57,6 @@ export function Home(){
                  
                  <div></div>
            </CoffeeBanner>
-           
            <CoffeeList>
               <h2>Nossos cafés</h2>
                

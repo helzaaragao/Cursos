@@ -6,7 +6,7 @@ import { CardContainer, CoffeImg,
 import { QuantityInput } from "../Form/QuantityInput"
 import { CheckFat, ShoppingCart } from "@phosphor-icons/react"
 import { useTheme } from "styled-components"
-// import { useCart } from "../../hooks/useCart"
+import { useCart } from "../../hooks/useCart"
 
   type Props = { 
         coffee: {
@@ -23,7 +23,7 @@ export function Card({coffee}: Props) {
     const [isItemAdded, setIsItemAdded] = useState(false)
     const [quantity, setQuantity] = useState(0)
     const theme = useTheme()
-    // const { addItem } = useCart()
+    const { addItem } = useCart()
 
     function incrementQuantity() {
         setQuantity((state) => state + 1)
@@ -36,7 +36,7 @@ export function Card({coffee}: Props) {
     }
 
     function handleAddItem() {
-        // addItem({ id: coffee.id, quantity })
+        addItem({ id: coffee.id, quantity })
         setIsItemAdded(true)
         setQuantity(1)
     }
