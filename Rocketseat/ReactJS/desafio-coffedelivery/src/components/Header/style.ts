@@ -47,6 +47,29 @@ export const HeaderContainer = styled.header`
             svg{
                 color:  ${({ theme }) => theme['yellow-dark']};
             }
+
+            &[aria-disabled='true']{
+                pointer-events: none;
+            }
+
+            span{ 
+                font-weight: bold; 
+                color: ${({ theme }) => theme['base-white']};
+                background-color:   ${({ theme }) => theme['yellow-dark']};
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                position: absolute;
+                top: 0px; 
+                right: 0px; 
+                transform: translate(-100%, 50%);
+            }
+
+        
         }
     }
 `
