@@ -57,6 +57,7 @@ export const HeaderContainer = styled.header`
                 color: ${({ theme }) => theme['base-white']};
                 background-color:   ${({ theme }) => theme['yellow-dark']};
                 border-radius: 50%;
+                font-size: 0.8rem;
                 width: 20px;
                 height: 20px;
                 display: flex;
@@ -66,7 +67,7 @@ export const HeaderContainer = styled.header`
                 position: absolute;
                 top: 0px; 
                 right: 0px; 
-                transform: translate(-100%, 50%);
+                transform: translate(-500%, 50%);
             }
 
         

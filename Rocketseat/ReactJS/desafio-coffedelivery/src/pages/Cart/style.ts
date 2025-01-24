@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CartContainer = styled.main`
      padding: 1rem 8rem 1rem 8rem;
      display: flex; 
+     justify-content: center;
      gap: 2rem; 
      line-height: 130%;
 `
@@ -96,7 +97,21 @@ export const PaymentOptions = styled.div`
      align-items: center;
      justify-content: center;
 `
-export const CoffeesSelected = styled.section``
+export const CoffeesSelected = styled.section`
+     h2{ 
+          color: ${({ theme }) => theme['base-subtitle']};
+          font-family: 'Baloo 2', sans-serif;
+          font-size: 1.125rem;
+          margin-bottom: 0.938rem;
+
+     }
+     
+     div{
+         background-color: ${({ theme }) => theme['base-card']};
+         width: 52rem;
+         height: 11.375rem;
+     }
+`
 export const CoffeesOptions = styled.div``
 export const Coffee = styled.div``
 export const CoffeInfo = styled.div``

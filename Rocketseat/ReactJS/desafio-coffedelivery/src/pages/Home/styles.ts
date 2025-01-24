@@ -10,7 +10,9 @@ export const CoffeeBanner = styled.section`
     padding: 1rem 8rem 1rem 8rem; 
 
     background-image: url(${bg});
+    
 `
+
 
 export const CoffeeBannerContent = styled.div`
     display: flex; 
@@ -83,8 +85,8 @@ export const CoffeeList = styled.section`
    > div {
      display: grid; 
      grid-template-columns: 1fr 1fr 1fr 1fr;
-     grid-row-gap: 3rem; 
-     grid-column-gap: 2rem;
+     grid-row-gap: 2rem; 
+     grid-column-gap: 1.5rem;
    }
 `
 

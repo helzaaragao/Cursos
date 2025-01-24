@@ -55,7 +55,6 @@ export function Home(){
                   <img src={coffeBanner} alt="" />
                 </CoffeeBannerContent>
                  
-                 <div></div>
            </CoffeeBanner>
            <CoffeeList>
               <h2>Nossos cafés</h2>
