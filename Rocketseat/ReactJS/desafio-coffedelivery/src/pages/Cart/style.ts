@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const CartContainer = styled.main`
-     padding: 1rem 8rem 1rem 8rem;
+     /* padding-right: 5rem; */
      display: flex; 
      justify-content: center;
      gap: 2rem; 
      line-height: 130%;
+     padding: 1rem 8rem 1rem 8rem;
 `
 export const FinalInfos = styled.section`
      h2{ 
@@ -105,17 +106,26 @@ export const CoffeesSelected = styled.section`
           margin-bottom: 0.938rem;
 
      }
-     
-     div{
-         background-color: ${({ theme }) => theme['base-card']};
-         width: 52rem;
-         height: 11.375rem;
+
+`
+export const CoffeesOptions = styled.div`
+         background-color: ${({ theme }) => theme['base-card']};     
+         width: 28rem;
+         display:flex; 
+         flex-direction: column;
+         align-items: start;
+         min-width: 448px;
+
+    > span {
+        display:flex;
      }
 `
-export const CoffeesOptions = styled.div``
 export const Coffee = styled.div``
 export const CoffeInfo = styled.div``
 export const CartTotal = styled.div``
-export const CartTotalInfo = styled.div``
+export const CartTotalInfo = styled.div`
+  
+     
+`
 export const CheckoutButton = styled.button``
 export const PaymentErrorMessage = styled.p``

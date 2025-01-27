@@ -244,7 +244,7 @@ export function Cart() {
 
                     <CartTotalInfo>
                         <div>
-                            <span>Total de itens</span>
+                            <span>Total de itens </span> 
                             <span>
                              {new Intl.NumberFormat('pt-br', {
                                 currency: 'BRL', 
