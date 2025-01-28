@@ -220,8 +220,8 @@ export function Cart() {
                             <Coffee>
                                 <div>
                                     <img src={coffee.image} alt={coffee.title} />
+                                    <span>{coffee.title}</span>
                                     <div>
-                                        <span>{coffee.title}</span>
                                         <CoffeInfo>
                                            <QuantityInput
                                                 quantity={coffee.quantity}

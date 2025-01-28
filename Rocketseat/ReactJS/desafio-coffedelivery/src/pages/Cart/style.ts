@@ -115,13 +115,49 @@ export const CoffeesOptions = styled.div`
          flex-direction: column;
          align-items: start;
          min-width: 448px;
+         padding: 2.5rem;
 
     > span {
         display:flex;
      }
 `
-export const Coffee = styled.div``
-export const CoffeInfo = styled.div``
+export const Coffee = styled.div`
+    width: 100%; 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 1.5rem;
+
+
+     img { 
+      width: 4rem; 
+    }
+`
+export const CoffeInfo = styled.div`
+     display:flex;
+     gap: 0.5rem;
+
+    > button {
+          background-color: ${({ theme }) => theme['base-button']};
+          border-color: transparent;
+          width: 5rem; 
+          height: 2.375rem;
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+          border-radius: 8px;
+          padding: 0.2rem;
+
+         
+          svg{ 
+             width: 1rem;
+             color: ${({ theme }) => theme['purple']};
+          }
+          span { 
+               font-size: 0.75rem;
+               text-transform: uppercase;
+          }
+     }
+`
 export const CartTotal = styled.div``
 export const CartTotalInfo = styled.div`
   
