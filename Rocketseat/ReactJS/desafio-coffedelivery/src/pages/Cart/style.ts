@@ -124,6 +124,7 @@ export const CoffeesOptions = styled.div`
 export const Coffee = styled.div`
     width: 100%; 
     display: flex; 
+    flex-direction: column;
     align-items: center; 
     margin-bottom: 1.5rem;
 
@@ -132,9 +133,23 @@ export const Coffee = styled.div`
       width: 4rem; 
     }
 `
+
+export const CoffeeTitle = styled.div `
+     display: flex; 
+     justify-content: center;
+     gap: 1rem; 
+     
+     span{ 
+          font-size: 1rem;
+          color: ${({ theme }) => theme['base-subtitle']};
+     }
+`
 export const CoffeInfo = styled.div`
      display:flex;
      gap: 0.5rem;
+     margin-top: -2rem;
+     margin-left: 0.7rem;
+
 
     > button {
           background-color: ${({ theme }) => theme['base-button']};
@@ -160,8 +175,23 @@ export const CoffeInfo = styled.div`
 `
 export const CartTotal = styled.div``
 export const CartTotalInfo = styled.div`
+     width: 100%;
+     display:flex; 
+     flex-direction: column; 
+     gap: 0.5rem;
+
+      div{ 
+          display: flex;
+          justify-content: space-between;
+         
+     }
+    
   
      
 `
-export const CheckoutButton = styled.button``
+export const CheckoutButton = styled.button`
+     width: 21rem; 
+     height: 2.875rem;
+     margin-top: 1rem;
+`
 export const PaymentErrorMessage = styled.p``

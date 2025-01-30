@@ -9,7 +9,9 @@ import { AddressContainer, AddressForm, AddressHeading, CartContainer, CoffeesOp
     PaymentOptions, Coffee,
     CoffeInfo,
     CartTotalInfo,
-    CheckoutButton} from "./style";
+    CheckoutButton, 
+    CoffeeTitle
+} from "./style";
 import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money, Trash} from "@phosphor-icons/react";
 import { useCart } from "../../hooks/useCart";
 import { Radio } from "../../components/Radio";
@@ -218,11 +220,12 @@ export function Cart() {
                     {coffeesInCart.map((coffee) => (
                         <Fragment key={coffee.id}>
                             <Coffee>
-                                <div>
-                                    <img src={coffee.image} alt={coffee.title} />
-                                    <span>{coffee.title}</span>
-                                    <div>
-                                        <CoffeInfo>
+                                    <CoffeeTitle>
+                                        <img src={coffee.image} alt={coffee.title} />
+                                        <span>{coffee.title}</span>
+                                        <aside>R$ {coffee.price?.toFixed(2)}</aside>
+                                    </CoffeeTitle>
+                                    <CoffeInfo>
                                            <QuantityInput
                                                 quantity={coffee.quantity}
                                                 incrementQuantity={() => handleItemIncrement(coffee.id)}
@@ -233,10 +236,7 @@ export function Cart() {
                                                 <Trash></Trash>
                                                 <span>Remover</span>
                                            </button>
-                                        </CoffeInfo>
-                                    </div>
-                                </div>
-                                <aside>R$ {coffee.price?.toFixed(2)}</aside>
+                                    </CoffeInfo>
                             </Coffee>
                             <span></span>
                         </Fragment>
