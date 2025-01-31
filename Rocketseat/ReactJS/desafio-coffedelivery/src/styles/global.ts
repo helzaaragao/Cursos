@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components' //pesquisar mais sobre
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -9,13 +9,13 @@ export const GlobalStyle = createGlobalStyle`
 
     :focus{
         outline: 0; 
-        box-shadow: 0 0 0 2px ${(props) => props.theme['base-label']}; //não tenho certeza
+        box-shadow: 0 0 0 2px ${(props) => props.theme['base-label']}; 
     }
 
     body{ 
         background: ${(props) => props.theme['base-background']};
         color: ${(props) => props.theme['base-text']};
-        -webkit-font-smoothing: antialiased; //pesquisar mais sobre
+        -webkit-font-smoothing: antialiased; 
     }
 
     body, input-security, textarea, button {

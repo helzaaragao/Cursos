@@ -143,6 +143,10 @@ export const CoffeeTitle = styled.div `
           font-size: 1rem;
           color: ${({ theme }) => theme['base-subtitle']};
      }
+
+     aside{
+          font-weight: bolder;
+     }
 `
 export const CoffeInfo = styled.div`
      display:flex;
@@ -185,13 +189,26 @@ export const CartTotalInfo = styled.div`
           justify-content: space-between;
          
      }
-    
+
+     div:last-child {
+          span {
+               font-size:1.25rem;
+               font-weight: bold;
+          }
+  }
   
      
 `
 export const CheckoutButton = styled.button`
-     width: 21rem; 
+     width: 100%; 
      height: 2.875rem;
      margin-top: 1rem;
+     text-transform: uppercase;
+
+     border-radius:0;
+     border-color: transparent;
+     color: ${({ theme }) => theme['base-white']};
+     background-color: ${({ theme }) => theme['yellow']};
+     padding: 0.5rem;
 `
 export const PaymentErrorMessage = styled.p``

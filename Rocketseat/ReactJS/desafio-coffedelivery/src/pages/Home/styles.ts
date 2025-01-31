@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import bg from '../../assets/bannerBackground.svg'
 
 export const CoffeeBanner = styled.section`
-    width: 100vw; 
+    width: 100%;
     display: flex; 
     flex-direction: column;
     align-items: center;
     margin-top: 4rem; 
     padding: 1rem 8rem 1rem 8rem; 
+    
 
     background-image: url(${bg});
     
@@ -17,12 +18,14 @@ export const CoffeeBanner = styled.section`
 export const CoffeeBannerContent = styled.div`
     display: flex; 
     gap: 2rem; 
+    
   
 `
 
 export const Heading = styled.div`
    width: 36.75rem; 
    height: 12rem; 
+   
    
 
    h1{
@@ -61,14 +64,11 @@ export const Info = styled.div`
             color:  ${({ theme }) => theme['base-text']}
         }
     }
-
-    /* width: 35.438rem; 
-    height: 5.25rem; 
-    gap: 2rem; */
     
 `
 
 export const CoffeeList = styled.section`
+    width: 100%;
      padding: 1rem 8rem 1rem 8rem; 
      margin-top: 2.5rem; 
 
@@ -85,10 +85,8 @@ export const CoffeeList = styled.section`
    > div {
      display: grid; 
      grid-template-columns: 1fr 1fr 1fr 1fr;
-     grid-row-gap: 2rem; 
+     grid-row-gap: 1.8rem; 
      grid-column-gap: 1.5rem;
    }
 `
-
-// Coloca padding no global porque vai ser para todos
 

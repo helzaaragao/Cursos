@@ -237,6 +237,7 @@ export function Cart() {
                                                 <span>Remover</span>
                                            </button>
                                     </CoffeInfo>
+                               
                             </Coffee>
                             <span></span>
                         </Fragment>
