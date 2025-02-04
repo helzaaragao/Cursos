@@ -1,5 +1,5 @@
 import { MapPin } from "@phosphor-icons/react";
-import { Details, Ilustration, PedidoConfirmadoContainer } from "./style";
+import { Details, Heading, Ilustration, PedidoConfirmadoContainer } from "./style";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
 import ilustration from '../../assets/Illustration.svg'
@@ -9,6 +9,11 @@ export function PedidoConfirmado(){
     const {orders} = useCart()
     const {orderId} = useParams()
     const orderInfo = orders.find((order) => order.id === Number(orderId))
+    const paymentMethod = { 
+        credit: 'Cartão de crédito', 
+        debit: 'Cartão de débito', 
+        cash: 'Dinheiro'
+    }
 
     if (!orderInfo?.id) {
         return null
@@ -19,10 +24,15 @@ export function PedidoConfirmado(){
     return (
         <PedidoConfirmadoContainer>
             <Details>
-                <h1>Uhu! Pedido confirmado</h1>
-                <p>Agora é só aguardar que logo o café chegará até você</p>
+                <Heading>
+                    <h1>Uhu! Pedido confirmado</h1>
+                    <p>Agora é só aguardar que logo o café chegará até você</p>
+                </Heading>
+             
                 <div>
-                    <MapPin></MapPin>
+                    <MapPin
+                        color={theme.white}
+                    ></MapPin>
                     <div>
                         <span>Entregue em <strong>{orderInfo.street}, {orderInfo.number} </strong></span>
                     </div>

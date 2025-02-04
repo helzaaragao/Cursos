@@ -6,7 +6,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 export const Radio = forwardRef(function Radio(
-    {children, isSelected, ...rest}: Props, ref: LegacyRef<HTMLInputElement>, 
+    { children, isSelected, ...rest}: Props, ref: LegacyRef<HTMLInputElement>, 
 ) { 
     return(
         <RadioContainer data-state={isSelected}>

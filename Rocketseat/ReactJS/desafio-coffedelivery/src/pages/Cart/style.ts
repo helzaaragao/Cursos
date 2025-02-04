@@ -122,7 +122,6 @@ export const CoffeesOptions = styled.div`
      }
 `
 export const Coffee = styled.div`
-    width: 100%; 
     display: flex; 
     flex-direction: column;
     align-items: center; 
@@ -204,6 +203,7 @@ export const CheckoutButton = styled.button`
      height: 2.875rem;
      margin-top: 1rem;
      text-transform: uppercase;
+     font-weight: bold;
 
      border-radius:0;
      border-color: transparent;
