@@ -1,9 +1,9 @@
 import { ThemeProvider } from "styled-components"
 import { GlobalStyle } from "./styles/global"
-import { Outlet } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 import { defaultTheme } from "./styles/themes/default"
 import { CartContextProvider } from "./contexts/CartProvider"
-import { Header } from "./components/Header/Header"
+import { Router } from "./Router"
 
 
 export function App() {
@@ -11,12 +11,12 @@ export function App() {
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle></GlobalStyle> 
 
-   
+      <BrowserRouter>
         <CartContextProvider>
-            <Header></Header>
-            <Outlet></Outlet>
+           <Router></Router>
+            
         </CartContextProvider>
-   
+        </BrowserRouter>
     </ThemeProvider> 
   )
 }

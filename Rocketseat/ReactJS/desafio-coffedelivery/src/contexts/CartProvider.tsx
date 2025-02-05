@@ -44,7 +44,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         },
     )
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const {cart, orders} = cartState
     

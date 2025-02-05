@@ -11,7 +11,7 @@ export function Router(){
             
                <Route path="/" element={<Home></Home>}></Route>
                <Route path="/cart" element={<Cart/>}></Route>
-               <Route path="/sucess" element={<PedidoConfirmado/>}></Route>
+               <Route path="/order/:orderId/success" element={<PedidoConfirmado/>}></Route>
             </Route>
         </Routes>
     )

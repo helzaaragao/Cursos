@@ -1,4 +1,4 @@
-import { MapPin } from "@phosphor-icons/react";
+import { MapPin, Money, Timer } from "@phosphor-icons/react";
 import { Details, Heading, Ilustration, PedidoConfirmadoContainer } from "./style";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
@@ -34,8 +34,19 @@ export function PedidoConfirmado(){
                         color={theme.white}
                     ></MapPin>
                     <div>
-                        <span>Entregue em <strong>{orderInfo.street}, {orderInfo.number} </strong></span>
+                            <span>Entregue em <strong>{orderInfo.street}, {orderInfo.number} </strong></span>
                     </div>
+                </div>
+                <div>
+                    <Timer></Timer>
+                    <span>
+                        Previsão de entrega
+                        <strong>20 min - 30 min</strong>
+                    </span>
+                </div>
+                <div>
+                    <Money></Money>
+                    <span>Pagamento na entrega <strong>{paymentMethod[orderInfo.paymentMethod]}</strong></span>
                 </div>
             </Details>
             <Ilustration>
