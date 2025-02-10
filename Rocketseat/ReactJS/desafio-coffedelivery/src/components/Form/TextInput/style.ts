@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Box = styled.div`
     width: 100%; 
+  
 `
 export const InputContainer = styled.div`
     display: flex; 
@@ -28,4 +29,9 @@ export const InputContainer = styled.div`
 
    
 `
-export const ErrorMessage = styled.p``
+export const ErrorMessage = styled.p`
+    font-size: 0.8rem;
+    margin-left: 1rem;
+    color: ${({ theme }) => theme['purple-dark']};
+       
+`

@@ -126,6 +126,7 @@ export const Coffee = styled.div`
     flex-direction: column;
     align-items: center; 
     margin-bottom: 1.5rem;
+    
 
 
      img { 
@@ -137,6 +138,7 @@ export const CoffeeTitle = styled.div `
      display: flex; 
      justify-content: center;
      gap: 1rem; 
+     position: relative;
      
      span{ 
           font-size: 1rem;
@@ -148,10 +150,10 @@ export const CoffeeTitle = styled.div `
      }
 `
 export const CoffeInfo = styled.div`
+     position: absolute;
      display:flex;
      gap: 0.5rem;
-     margin-top: -2rem;
-     margin-left: 0.7rem;
+     margin-top: 2rem;
 
 
     > button {

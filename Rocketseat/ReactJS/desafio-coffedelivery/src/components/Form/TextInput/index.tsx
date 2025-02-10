@@ -24,8 +24,6 @@ export const TextInput = forwardRef(function TextInput({
         onBlur?.(event)
     }
 
-
-
     return(
         <Box {...containerProps}>
             <InputContainer data-state={isFocused ? 'focused' : 'blurred'}>

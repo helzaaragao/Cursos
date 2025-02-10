@@ -55,6 +55,7 @@ export const Info = styled.section`
             display:flex;
             align-items: center;
             gap: 0.6rem;
+            margin-top: 1rem;
             margin-bottom: 1rem;
                     > svg {
                        padding: 8px;
