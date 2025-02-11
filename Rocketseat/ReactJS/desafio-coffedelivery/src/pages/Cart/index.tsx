@@ -176,33 +176,36 @@ export function Cart() {
                     </div>
                 </PaymentHeading>
                 <PaymentOptions>
-                    <Radio
-                      isSelected={selectedPaymentMethod === 'credit'}
-                      {...register('paymentMethod')}
-                      value="credit"
-                    >
-                        <CreditCard size={16}></CreditCard>
-                        <span>Cartão de crédito</span>
-                    </Radio>
+                    <div>
+                        <Radio
+                        isSelected={selectedPaymentMethod === 'credit'}
+                        {...register('paymentMethod')}
+                        value="credit"
+                        >
+                            <CreditCard size={16}></CreditCard>
+                            <span>Cartão de crédito</span>
+                        </Radio>
 
-                    <Radio
-                      isSelected={selectedPaymentMethod === 'debit'}
-                      {...register('paymentMethod')}
-                      value="debit"
-                    >
-                        <Bank size={16}></Bank>
-                         <span>Cartão de débito</span>
-                    </Radio>
+                        <Radio
+                        isSelected={selectedPaymentMethod === 'debit'}
+                        {...register('paymentMethod')}
+                        value="debit"
+                        >
+                            <Bank size={16}></Bank>
+                            <span>Cartão de débito</span>
+                        </Radio>
 
-                     <Radio
-                      isSelected={selectedPaymentMethod === 'cash'}
-                      {...register('paymentMethod')}
-                      value="cash"
-                    >
-                        <Money size={16}></Money>
-                        <span>Dinheiro</span>
-                    </Radio>
-
+                        <Radio
+                        isSelected={selectedPaymentMethod === 'cash'}
+                        {...register('paymentMethod')}
+                        value="cash"
+                        >
+                            <Money size={16}></Money>
+                            <span>Dinheiro</span>
+                        </Radio>
+                        
+                    </div>
+                  
                     {errors.paymentMethod ? (
                         <PaymentErrorMessage role="alert">
                          {errors.paymentMethod.message}

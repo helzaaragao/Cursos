@@ -25,7 +25,7 @@ export const FinalInfos = styled.section`
 
 `
 export const AddressContainer = styled.div`
-     height: 23.25rem;
+     min-height: 23.25rem;
      padding: 2.5rem; 
      background-color: ${({ theme }) => theme['base-card']};
      margin-bottom: 0.6rem;
@@ -54,7 +54,7 @@ export const AddressHeading = styled.div`
      
 `
 export const AddressForm = styled.div`
-     height: 13.5rem;  
+     min-height: 13.5rem;
      display: grid; 
      grid-template-areas: 
      'cep . .'
@@ -67,7 +67,7 @@ export const AddressForm = styled.div`
     
 `
 export const PaymentContainer = styled.div`
-     height: 12.938rem; 
+     min-height: 12.938rem; 
      padding: 2.5rem; 
      background-color: ${({ theme }) => theme['base-card']};
 `
@@ -94,9 +94,21 @@ export const PaymentHeading = styled.div`
 ` 
 export const PaymentOptions = styled.div`
      display: flex;
+     flex-direction: column;
      gap: 0.75rem; 
-     align-items: center;
-     justify-content: center;
+
+     > div{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1.5rem;
+     }
+
+`
+export const PaymentErrorMessage = styled.p`
+     width: 100%;
+     font-size: 0.8rem;
+     color: ${({ theme }) => theme['error']};
 `
 export const CoffeesSelected = styled.section`
      h2{ 
@@ -213,4 +225,4 @@ export const CheckoutButton = styled.button`
      background-color: ${({ theme }) => theme['yellow']};
      padding: 0.5rem;
 `
-export const PaymentErrorMessage = styled.p``
+

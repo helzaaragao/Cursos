@@ -5,7 +5,8 @@ export const HeaderContainer = styled.header`
     display: flex; 
     align-items: center;
     justify-content: space-between; 
-    padding: 1rem 8rem 1rem 8rem;
+     padding: 2rem 12rem 2rem 12rem; 
+ 
 
     nav{
         display: flex; 
@@ -43,6 +44,7 @@ export const HeaderContainer = styled.header`
             justify-content: center;
             background-color: ${({ theme }) => theme['yellow-light']};
             border-radius: 6px;
+            position: relative;
 
             svg{
                 color:  ${({ theme }) => theme['yellow-dark']};
@@ -67,7 +69,7 @@ export const HeaderContainer = styled.header`
                 position: absolute;
                 top: 0px; 
                 right: 0px; 
-                transform: translate(-500%, 50%);
+                transform: translate(50%, -50%);
             }
 
         

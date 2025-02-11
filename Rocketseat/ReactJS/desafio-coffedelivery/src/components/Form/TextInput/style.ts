@@ -24,14 +24,15 @@ export const InputContainer = styled.div`
         color: ${({ theme }) => theme['base-label']};
         font-size: 0.875rem;
         font-style: italic;
-        padding-right: 0.75rem; 
+        margin-left: 0.6rem; 
     }
 
    
 `
 export const ErrorMessage = styled.p`
+    width: 100%;
     font-size: 0.8rem;
-    margin-left: 1rem;
-    color: ${({ theme }) => theme['purple-dark']};
+    margin-top: 0.4rem;
+    color: ${({ theme }) => theme['error']};
        
 `
