@@ -1,21 +1,19 @@
 import styled from "styled-components";
 
 export const QuantityContainer = styled.div`
-    width: 4.5rem; 
-    height: 2.375rem;
-    border-radius: 8px 8px;
+    padding: 8px;
+    border-radius: 6px;
     display: flex; 
-    align-items: center;
-    justify-content: center;
-    gap: 0.2rem; 
-    text-align: center;
+    gap: 4px; 
 
     background-color: ${({ theme }) => theme['base-button']};
     
 
-    button {
+    button {    
+        display: flex;
         background-color: transparent;
         border-color: transparent;
+        align-items: center;
     }
 
     button svg {
@@ -26,5 +24,13 @@ export const QuantityContainer = styled.div`
         &:hover {
             color: ${({ theme }) => theme['purple-dark']};
         }
+      
     }
+
+    span {
+            padding-top: 2px;
+            color:${({ theme }) => theme['base-title']} ;
+        }
+
+
 `

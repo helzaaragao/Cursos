@@ -7,10 +7,9 @@ import { AddressContainer, AddressForm, AddressHeading, CartContainer, CoffeesOp
     PaymentErrorMessage, 
     PaymentHeading,
     PaymentOptions, Coffee,
-    CoffeInfo,
     CartTotalInfo,
     CheckoutButton, 
-    CoffeeTitle
+    CoffeeInfo
 } from "./style";
 import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money, Trash} from "@phosphor-icons/react";
 import { useCart } from "../../hooks/useCart";
@@ -223,12 +222,12 @@ export function Cart() {
                     {coffeesInCart.map((coffee) => (
                         <Fragment key={coffee.id}>
                             <Coffee>
-                                    <CoffeeTitle>
-                                        <img src={coffee.image} alt={coffee.title} />
-                                        <span>{coffee.title}</span>
-                                        <aside>R$ {coffee.price?.toFixed(2)}</aside>
-                                    </CoffeeTitle>
-                                    <CoffeInfo>
+                                <div>
+                                  <img src={coffee.image} alt={coffee.title} />
+                                    <div>
+                                      <span>{coffee.title}</span>
+                                        
+                                    <CoffeeInfo>
                                            <QuantityInput
                                                 quantity={coffee.quantity}
                                                 incrementQuantity={() => handleItemIncrement(coffee.id)}
@@ -239,8 +238,10 @@ export function Cart() {
                                                 <Trash></Trash>
                                                 <span>Remover</span>
                                            </button>
-                                    </CoffeInfo>
-                               
+                                    </CoffeeInfo>
+                                    </div>
+                                </div>
+                                    <aside>R$ {coffee.price?.toFixed(2)}</aside>
                             </Coffee>
                             <span></span>
                         </Fragment>

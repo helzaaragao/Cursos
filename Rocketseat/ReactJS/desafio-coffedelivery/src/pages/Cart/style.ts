@@ -122,86 +122,104 @@ export const CoffeesSelected = styled.section`
 `
 export const CoffeesOptions = styled.div`
          background-color: ${({ theme }) => theme['base-card']};     
-         width: 28rem;
-         display:flex; 
-         flex-direction: column;
-         align-items: start;
-         min-width: 448px;
-         padding: 2.5rem;
+         width: 100%;
+         min-width: 448px; 
+         padding: 40px;
+         border-radius: 6px 36px;
 
     > span {
-        display:flex;
+        display:block;
+        height: 1px;
+        background-color: ${({ theme }) => theme['base-button']};
+        margin: 24px 0;
      }
 `
 export const Coffee = styled.div`
     display: flex; 
-    flex-direction: column;
-    align-items: center; 
-    margin-bottom: 1.5rem;
-    
+    justify-content: space-between;
 
+    > div{
+               > img { 
+               width: 64px;
+               height: 64px;
+          }
+          display: flex;
+          align-items: stretch;
+          gap: 20px;
 
-     img { 
-      width: 4rem; 
+          > div{ 
+               display: flex;
+               flex-direction: column;
+               justify-content: space-between;
+          }
     }
+   > aside { 
+               font-weight: bold;
+          }
+    
 `
 
-export const CoffeeTitle = styled.div `
-     display: flex; 
-     justify-content: center;
-     gap: 1rem; 
-     position: relative;
+// export const CoffeeTitle = styled.div `
+//      display: flex;   
+//      gap: 0.5rem; 
      
-     span{ 
-          font-size: 1rem;
-          color: ${({ theme }) => theme['base-subtitle']};
-     }
+//      span{ 
+//           font-size: 1rem;
+//           color: ${({ theme }) => theme['base-subtitle']};
+//      }
 
-     aside{
-          font-weight: bolder;
-     }
-`
-export const CoffeInfo = styled.div`
-     position: absolute;
+//      aside{
+//           font-weight: bolder;
+//      }
+// `
+export const CoffeeInfo = styled.div`
      display:flex;
-     gap: 0.5rem;
-     margin-top: 2rem;
+     gap: 8px;
 
 
     > button {
           background-color: ${({ theme }) => theme['base-button']};
           border-color: transparent;
-          width: 5rem; 
-          height: 2.375rem;
           display: flex;
-          align-items: center;
-          gap: 0.2rem;
-          border-radius: 8px;
-          padding: 0.2rem;
+          gap: 8px;
+          border-radius: 6px;
+          padding: 6px 8px;
 
+          transition: all 0.2s;
+
+          &:hover{
+              color: ${({ theme }) => theme['base-hover']};
+          }
          
-          svg{ 
-             width: 1rem;
+          > svg{ 
              color: ${({ theme }) => theme['purple']};
           }
-          span { 
+         > span { 
                font-size: 0.75rem;
                text-transform: uppercase;
+               color: ${({ theme }) => theme['base-text']};
           }
      }
 `
-export const CartTotal = styled.div``
 export const CartTotalInfo = styled.div`
-     width: 100%;
      display:flex; 
      flex-direction: column; 
-     gap: 0.5rem;
+     gap: 12px;
 
       div{ 
           display: flex;
+          align-items: center;
           justify-content: space-between;
+
+          span:first-child { 
+           font-size: 0.875rem;
+           }
+           span:last-child{
+               font-size:1rem;
+           }
          
      }
+     
 
      div:last-child {
           span {

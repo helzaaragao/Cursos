@@ -68,8 +68,7 @@ export const Info = styled.div`
 `
 
 export const CoffeeList = styled.section`
-    width: 100%;
-     padding: 1rem 8rem 1rem 8rem; 
+     padding: 2rem 15rem 2rem 13rem; 
      margin-top: 2.5rem; 
 
      h2 {
