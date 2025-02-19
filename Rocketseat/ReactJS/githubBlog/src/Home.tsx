@@ -1,35 +1,48 @@
-import { HomeContainer, Info, InfoProfile, Profile, ProfileImage } from "./Home";
-import {Buildings, GithubLogo, Users} from '@phosphor-icons/react';
-import avatar from '../src/assets/avatar.png'
-import { Link } from "react-router-dom";
+import { Profile } from "./components/Profile/profile.tsx";
+import { HomeContainer } from "./Home.ts";
+
 
 export function Home(){ 
     return (
         <HomeContainer>
-            <Profile>
+            <Profile></Profile>
+            {/* <Profile>
                 <ProfileImage>
                     <img src={avatar} alt="" />
                 </ProfileImage>
-                <InfoProfile>
+                <InfoProfile>  
                 <h1>Cameron Williamson</h1>
-                <Link to={'/'}>Github</Link> 
+                <span><Link to={'/'}>Github</Link></span>
                 <p>Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.</p>
                 <Info>
                     <div>
-                        <GithubLogo size={32} />
+                        <GithubLogo size={18} weight="fill"/>
                         <span>cameronwill</span>
                     </div>
                     <div>
-                        <Buildings size={32} />
+                        <Buildings size={18} weight="fill"/>
                         <span>Rocketseat</span>
                     </div>
                     <div>
-                        <Users size={32} />
+                        <Users size={18} weight="fill"/>
                         <span>32 seguidores</span>
                     </div>
                 </Info>
                 </InfoProfile>
-            </Profile>
+                
+            </Profile> */}
+            {/* <Search>
+                <div>
+                    <h2>Publicações</h2>
+                    <span>6 publicações</span>
+                </div>
+                <input type="text" />
+            </Search> 
+            
+            colocar profile como componente para parar de atrapalhar aqui 
+            */}
+
+           
           
 
         </HomeContainer>
