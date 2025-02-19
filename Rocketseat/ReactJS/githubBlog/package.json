@@ -10,7 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@phosphor-icons/react": "^2.1.7",
+    "esbuild": "^0.25.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.5",
@@ -25,8 +26,8 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
-    "typescript": "^5.5.3",
+    "typescript": "^5.7.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^0.10.3"
+    "vite": "^6.1.1"
   }
 }

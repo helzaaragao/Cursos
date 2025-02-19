@@ -8,10 +8,11 @@ export const HeaderContainer = styled.header`
     background-repeat:no-repeat;
     background-size: cover;
     display: flex;
-    align-items: center;
     justify-content: center;
 
     img{ 
-
+       width: 9.25rem;
+       height: 6.125rem;
+       margin-top: 2rem;
     }
 `
