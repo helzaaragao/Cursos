@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-export const Profile = styled.section`
-      position: relative;
+export const ProfileAvatar = styled.section`
+       position: relative;
        width: 54rem;
        height: 13.25rem;
        margin-top: 12rem;

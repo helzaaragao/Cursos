@@ -1,50 +1,29 @@
-import { Profile } from "./components/Profile/profile.tsx";
-import { HomeContainer } from "./Home.ts";
+
+import { Profile } from "./components/Profile/index.tsx";
+import { Card, HomeContainer, Posts, Search } from "./Home.ts";
 
 
 export function Home(){ 
     return (
         <HomeContainer>
             <Profile></Profile>
-            {/* <Profile>
-                <ProfileImage>
-                    <img src={avatar} alt="" />
-                </ProfileImage>
-                <InfoProfile>  
-                <h1>Cameron Williamson</h1>
-                <span><Link to={'/'}>Github</Link></span>
-                <p>Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.</p>
-                <Info>
-                    <div>
-                        <GithubLogo size={18} weight="fill"/>
-                        <span>cameronwill</span>
-                    </div>
-                    <div>
-                        <Buildings size={18} weight="fill"/>
-                        <span>Rocketseat</span>
-                    </div>
-                    <div>
-                        <Users size={18} weight="fill"/>
-                        <span>32 seguidores</span>
-                    </div>
-                </Info>
-                </InfoProfile>
-                
-            </Profile> */}
-            {/* <Search>
+            <Search>
                 <div>
                     <h2>Publicações</h2>
                     <span>6 publicações</span>
                 </div>
-                <input type="text" />
+                <input type="text" placeholder="Buscar conteúdo" />
             </Search> 
+            <Posts>
+                <Card>
+                    <h3>JavaScript data types and data structures</h3>
+                    <span>Há 1 dia</span>
+                    <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.</p>
+                </Card>
+            </Posts>
+
             
-            colocar profile como componente para parar de atrapalhar aqui 
-            */}
-
-           
-          
-
+            {/* Codar aqui o menor, coloca um link para o maior e assim vai. Mas não sei como seria funcionando isso */}
         </HomeContainer>
      
     )

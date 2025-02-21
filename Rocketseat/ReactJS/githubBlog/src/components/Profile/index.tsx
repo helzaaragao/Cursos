@@ -1,12 +1,11 @@
 import { GithubLogo, Buildings, Users } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
-import { Info, InfoProfile, Profile, ProfileImage } from "./profile.ts";
+import { Info, InfoProfile, ProfileAvatar, ProfileImage } from "./style.ts";
 import avatar from '../../assets/avatar.png'
-import React from "react";
 
 export function Profile() { 
     return(
-        <Profile>
+        <ProfileAvatar>
         <ProfileImage>
             <img src={avatar} alt="" />
         </ProfileImage>
@@ -30,6 +29,6 @@ export function Profile() {
         </Info>
         </InfoProfile>
         
-    </Profile>
+    </ProfileAvatar>
     )
 }
