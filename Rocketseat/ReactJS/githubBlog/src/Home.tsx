@@ -1,9 +1,20 @@
-
 import { Profile } from "./components/Profile/index.tsx";
 import { Card, HomeContainer, Posts, Search } from "./Home.ts";
+import { Link } from "react-router-dom";
+
+// const truncateText = (text, maxWords) => {
+//     const words = text.split(' ');
+//     if (words.length > maxWords) {
+//       return words.slice(0, maxWords).join(' ') + '...';
+//     }
+//     return text;
+//   };
+  
 
 
-export function Home(){ 
+export function Home({id, description}){ 
+    // const truncatedDescription = truncateText(description,27);
+
     return (
         <HomeContainer>
             <Profile></Profile>
@@ -16,14 +27,27 @@ export function Home(){
             </Search> 
             <Posts>
                 <Card>
-                    <h3>JavaScript data types and data structures</h3>
-                    <span>Há 1 dia</span>
+                    <Link to={`/details/${id}`}>
+                    <div>
+                        <h3>JavaScript data types and data structures</h3>
+                        <span>Há 1 dia</span>
+                    </div>
                     <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.</p>
+                    </Link>
+                </Card>
+                <Card>
+                    <Link to={`/details/${id}`}>
+                        <div>
+                            <h3>JavaScript data types and data structures</h3>
+                            <span>Há 1 dia</span>
+                        </div>
+                        <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.</p>
+                    </Link>
                 </Card>
             </Posts>
 
             
-            {/* Codar aqui o menor, coloca um link para o maior e assim vai. Mas não sei como seria funcionando isso */}
+            
         </HomeContainer>
      
     )
