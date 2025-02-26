@@ -1,47 +1,73 @@
 import { GithubLogo, Buildings, Users } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { Info, InfoProfile, ProfileAvatar, ProfileImage } from "./style.ts";
-import avatar from '../../assets/avatar.png'
 import { useEffect, useState } from "react";
 
-export function Profile({ username }) { 
+interface ProfileProps {
+    username: string;
+}
+
+export function Profile({ username }: ProfileProps) { 
     const [user, setUser] = useState(null); 
-    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         if(!username){
-            setUser(null)
+            setUser(null) //limpa os dados do usuário
             setError(null)
             return; 
         }
         const fetchUserData = async () => {
+            setLoading(true); //inicia o carregamento
+            setError(null) //limap os erros anteriores
+
             try{
-             
-                const response = await fetch(`https://api.github.com/users/${username}`);
+                const response = await fetch(`https://api.github.com/users/${username}`)
                 if(!response.ok){
                     throw new Error("usuário não encontrado");
                 }
                 const data = await response.json();
                 setUser(data); //atualiza o estado com os dados usuário 
-            } catch(err){
-                setError(err.message);
-            }  
-        }
+            } catch(error){
+                if(error instanceof Error){
+                    setError(error.message);
+                } else{
+                    setError("Ocorreu um erro desconhecido");
+                }
+    
+            }  finally { 
+                setLoading(false);
+            }
+        };
+
         fetchUserData();
     },[username]);
+
+    if (!user) {
+        return <p>Nenhum dado encontrado</p>
+    }
+    if (loading) {
+        return <p>Carregando...</p>;
+    }
+    if (error) {
+        return <p>Erro: {error}</p>;
+    }
     return(
         <ProfileAvatar>
         <ProfileImage>
-            <img src={avatar} alt="" />
+            <img src={user.avatar_url} alt="" />
         </ProfileImage>
         <InfoProfile>  
-        <h1>{user.name}</h1>
-        <span><Link to={'/'}>Github</Link></span>
-        <p>Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.</p>
+            <div>
+                <h1>{user.name || "Nome não disponivel"}</h1>
+                <span><Link to={user.html_url}>Github</Link></span>
+            </div>
+        <p>{user.bio}</p>
         <Info>
             <div>
                 <GithubLogo size={18} weight="fill"/>
-                <span>cameronwill</span>
+                <span>{user.login}</span>
             </div>
             <div>
                 <Buildings size={18} weight="fill"/>
@@ -49,7 +75,7 @@ export function Profile({ username }) {
             </div>
             <div>
                 <Users size={18} weight="fill"/>
-                <span>32 seguidores</span>
+                <span>{user.followers} seguidores</span>
             </div>
         </Info>
         </InfoProfile>

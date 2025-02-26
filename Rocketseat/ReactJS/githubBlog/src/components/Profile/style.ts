@@ -20,12 +20,25 @@ export const ProfileImage = styled.div`
     }
 `
 export const InfoProfile = styled.div`
-    h1{
-        font-size: 1.5rem;
-        color: ${({ theme }) => theme.colors['base-text']};
-        margin-top: 1rem;
+    div{
+        display: flex;
+        justify-content: space-between;
+        h1{
+            font-size: 1.5rem;
+            color: ${({ theme }) => theme.colors['base-text']};
+            margin-top: 1rem;
+        }
+        span{
+            a{
+                color: ${({ theme }) => theme.colors['blue']};
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+          
+        }
+        
     }
-
+   
 `
 
 export const Info = styled.div`

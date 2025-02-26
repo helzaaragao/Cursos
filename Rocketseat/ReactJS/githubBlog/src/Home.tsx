@@ -17,7 +17,7 @@ export function Home({id, description}){
 
     return (
         <HomeContainer>
-            <Profile></Profile>
+            <Profile username="helzaaragao"></Profile>
             <Search>
                 <div>
                     <h2>Publicações</h2>
