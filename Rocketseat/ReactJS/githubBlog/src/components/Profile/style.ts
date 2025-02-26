@@ -20,23 +20,36 @@ export const ProfileImage = styled.div`
     }
 `
 export const InfoProfile = styled.div`
-    div{
+    width: 38.25rem;
+
+    div:first-child{
         display: flex;
         justify-content: space-between;
         h1{
             font-size: 1.5rem;
-            color: ${({ theme }) => theme.colors['base-text']};
-            margin-top: 1rem;
+            color: ${({ theme }) => theme.colors['base-title']};
+            height: 1.938rem;
         }
         span{
+            display: flex;
+            gap: 0.2rem;
+            font-weight: bold;
             a{
                 color: ${({ theme }) => theme.colors['blue']};
                 text-decoration: none;
                 text-transform: uppercase;
             }
+            svg {
+                color:${({ theme }) => theme.colors['blue']};
+            }
           
         }
         
+    }
+
+    p{
+        margin-top: 0.4rem;
+        height: 3.25rem;
     }
    
 `

@@ -1,4 +1,4 @@
-import { GithubLogo, Buildings, Users } from "@phosphor-icons/react";
+import { GithubLogo, Buildings, Users, ArrowLineUpRight } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { Info, InfoProfile, ProfileAvatar, ProfileImage } from "./style.ts";
 import { useEffect, useState } from "react";
@@ -7,8 +7,17 @@ interface ProfileProps {
     username: string;
 }
 
+interface UserData {
+    avatar_url: string;
+    name: string;
+    html_url: string;
+    bio: string;
+    login: string;
+    followers: number;
+}
+
 export function Profile({ username }: ProfileProps) { 
-    const [user, setUser] = useState(null); 
+    const [user, setUser] = useState<UserData | null>(null); 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -61,7 +70,7 @@ export function Profile({ username }: ProfileProps) {
         <InfoProfile>  
             <div>
                 <h1>{user.name || "Nome não disponivel"}</h1>
-                <span><Link to={user.html_url}>Github</Link></span>
+                <span><Link to={user.html_url}>Github</Link><ArrowLineUpRight size={18} weight="bold" /></span>
             </div>
         <p>{user.bio}</p>
         <Info>
