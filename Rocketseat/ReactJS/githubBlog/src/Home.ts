@@ -36,14 +36,14 @@ export const Posts = styled.section`
     width: 54rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    display:flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    justify-content: center;
+    
 `
 export const Card = styled.div`
-    width: 50%;
+    width: auto;
     height: 16.25rem;
-    display: flex;
     background-color: ${({ theme }) => theme.colors['base-post']};
     border-radius: 10px;
     padding: 1.5rem;
@@ -53,17 +53,18 @@ export const Card = styled.div`
 
    
     div{
+       
         display: flex;
         margin-bottom: 1rem;
+        justify-content: space-between;
 
         h3{
-        
         color:  ${({ theme }) => theme.colors['base-title']};
         font-size: 1.25rem;
         }
 
         span{
-        width: 5rem;
+        width: 10rem;
         color: ${({ theme }) => theme.colors['base-span']};
         font-size: 0.875rem;
         }

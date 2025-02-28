@@ -2,16 +2,12 @@ import { useEffect, useState } from "react";
 import { Profile } from "./components/Profile/index.tsx";
 import { Card, HomeContainer, Posts, Search } from "./Home.ts";
 import { Link } from "react-router-dom";
-
-// const truncateText = (text, maxWords) => {
-//     const words = text.split(' ');
-//     if (words.length > maxWords) {
-//       return words.slice(0, maxWords).join(' ') + '...';
-//     }
-//     return text;
-//   };
+import {formatDistanceToNow} from "date-fns"
+import {ptBR} from "date-fns/locale";
 
 interface Issue {
+    updated_at: string;
+    body: string;
     id: number;
     title: string;
     html_url: string;
@@ -22,8 +18,7 @@ interface Issue {
   
 
 
-export function Home({id, description}){ 
-    // const truncatedDescription = truncateText(description,27);
+export function Home({}){ 
     const [issues, setIssues] = useState<Issue[]>([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
@@ -58,6 +53,24 @@ export function Home({id, description}){
         fetchIssues()
     }, [] );
 
+    const limitWords = (text:string, maxWords:number) => {
+        const safeText = text || "";
+        const words = safeText.split(' ');
+        if(words.length > maxWords){ 
+            return words.slice(0,maxWords).join(' ')+ '...';
+        }
+        return safeText
+    }
+
+    
+    if (loading) {
+        return <div>Carregando...</div>; // Exibe um indicador de carregamento
+    }
+
+    if (error) {
+        return <div>{error}</div>; // Exibe uma mensagem de erro
+    }
+
 
     return (
         <HomeContainer>
@@ -75,22 +88,15 @@ export function Home({id, description}){
                         <Link to={`/details/${issue.id}`}>
                         <div>
                             <h3>{issue.title}</h3>
-                            <span>{issue.updated_at}</span>
+                            <span>{formatDistanceToNow(new Date(issue.updated_at), {
+                                addSuffix: true, 
+                                locale: ptBR, 
+                            })}</span>
                         </div>
-                        <p>{issue.body}</p>
+                        <p>{limitWords(issue.body,27)}</p>
                         </Link>
                 </Card>
                 ))}
-               
-                {/* <Card>
-                    <Link to={`/details/${id}`}>
-                        <div>
-                            <h3>JavaScript data types and data structures</h3>
-                            <span>Há 1 dia</span>
-                        </div>
-                        <p>Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.</p>
-                    </Link>
-                </Card> */}
             </Posts>
 
             
