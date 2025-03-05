@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import {formatDistanceToNow} from "date-fns"
 import {ptBR} from "date-fns/locale";
 
-interface Issue {
+export interface Issue {
     updated_at: string;
     body: string;
     id: number;
@@ -85,7 +85,7 @@ export function Home({}){
             <Posts>
                 {issues.map((issue) => (
                   <Card key={issue.id}>
-                        <Link to={`/details/${issue.id}`}>
+                        <Link to={`/details/${issue.id}`} state={{issues}}>
                         <div>
                             <h3>{issue.title}</h3>
                             <span>{formatDistanceToNow(new Date(issue.updated_at), {

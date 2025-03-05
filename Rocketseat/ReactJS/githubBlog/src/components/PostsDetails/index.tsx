@@ -1,8 +1,62 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PostBody, PostContainer, PostHeader, PostIcones } from "./style";
 import { ArrowLineUpRight, Calendar, CaretLeft, ChatCircle, GithubLogo } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
+import { Issue } from "../../Home.tsx";
+
+interface LocationState {
+    issuesList: Issue[];
+}
 
 export function PostsDetails(){
+    const {id} = useParams<{ id:string }>();
+    const [issue, setIssue] = useState<Issue | null>(null);
+    const issuesList = (location.state as LocationState)?.issuesList;
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const isValidIssue = issuesList?.some((issue) => issue.id === Number(id))
+
+    const fetchIssueDetails = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch(
+                `https://api.github.com/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${id}`
+            );
+
+            if (!response.ok) {
+                throw new Error("Erro ao buscar detalhes da issue");
+            }
+            const data = await response.json();
+            setIssue(data);
+        } catch (err) {
+            setError("Ocorreu um erro ao buscar os detalhes da issue");
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        if (id && isValidIssue) { // Só faz a requisição se o `id` existir
+            fetchIssueDetails();
+        }
+    }, [id, isValidIssue]);
+
+    if (loading) {
+        return <div>Carregando...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
+
+    if (!issue) {
+        return <div>Issue não encontrada</div>;
+    }
+
+
     return(
         <PostContainer>
             <PostHeader>
@@ -10,7 +64,7 @@ export function PostsDetails(){
                     <button><CaretLeft size={18} weight="fill" />VOLTAR</button>
                     <Link to={'/'}>VER NO GITHUB <ArrowLineUpRight size={18} weight="bold" /></Link>
                 </div>
-                <h2>JavaScript data types and data structures</h2>
+                <h2>{issue.title}</h2>
                 <PostIcones>
                     <div>
                         <GithubLogo size={18} weight="fill"/>
