@@ -78,4 +78,15 @@ export const PostIcones = styled.div`
 export const PostBody = styled.div`
     width: 54rem;
     padding: 2rem;
+    text-align: justify;
+
+    a{
+        color:  ${({ theme }) => theme.colors['blue']};
+        text-decoration: dashed;
+    }
+
+    img{ 
+        width: 100%;
+    }
+
 `

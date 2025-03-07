@@ -70,7 +70,7 @@ export function Profile({ username }: ProfileProps) {
         <InfoProfile>  
             <div>
                 <h1>{user.name || "Nome não disponivel"}</h1>
-                <span><Link to={user.html_url}>Github</Link><ArrowLineUpRight size={18} weight="bold" /></span>
+                <span><Link to={user.html_url} target="_blank">Github</Link><ArrowLineUpRight size={18} weight="bold" /></span>
             </div>
         <p>{user.bio}</p>
         <Info>

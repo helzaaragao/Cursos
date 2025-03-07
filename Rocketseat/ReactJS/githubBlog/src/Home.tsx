@@ -14,6 +14,7 @@ export interface Issue {
     user: {
       login: string;
     };
+    comments: number;
 }
   
 
@@ -22,6 +23,7 @@ export function Home({}){
     const [issues, setIssues] = useState<Issue[]>([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null)
+    const [searchTerm, setSearchTerm] = useState('')
 
     const repo = "reactjs-github-blog-challenge"; // Nome do repositório
     const username = "rocketseat-education";
@@ -71,6 +73,20 @@ export function Home({}){
         return <div>{error}</div>; // Exibe uma mensagem de erro
     }
 
+    const filteredIssues = issues.filter((issue) => {
+        if (searchTerm.trim() === "") {
+            return true;
+        }
+    
+        const searchText = searchTerm.toLowerCase();
+        const title = issue.title || ""; // Fornece um valor padrão caso `title` seja null ou undefined
+        const body = issue.body || ""; // Fornece um valor padrão caso `body` seja null ou undefined    
+        return (
+            title.toLowerCase().includes(searchText) ||
+            body.toLowerCase().includes(searchText)
+        );
+    });
+
 
     return (
         <HomeContainer>
@@ -78,14 +94,16 @@ export function Home({}){
             <Search>
                 <div>
                     <h2>Publicações</h2>
-                    <span>6 publicações</span>
+                    <span>{filteredIssues.length} publicações</span>
                 </div>
-                <input type="text" placeholder="Buscar conteúdo" />
+                <input type="text" placeholder="Buscar conteúdo" 
+                    value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
+                />
             </Search> 
             <Posts>
-                {issues.map((issue) => (
+                {filteredIssues.map((issue) => (
                   <Card key={issue.id}>
-                        <Link to={`/details/${issue.id}`} state={{issues}}>
+                        <Link to={`/details/${issue.id}`} state={{ issuesList: issues }}>
                         <div>
                             <h3>{issue.title}</h3>
                             <span>{formatDistanceToNow(new Date(issue.updated_at), {
