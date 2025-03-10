@@ -29,6 +29,10 @@ export const Search = styled.section`
         &::placeholder{
             color: ${({ theme }) => theme.colors['base-label']};
         }
+
+        &:hover{
+            border-color: ${({ theme }) => theme.colors['blue']};
+        }
    }
   
 `
@@ -43,12 +47,19 @@ export const Posts = styled.section`
 `
 export const Card = styled.div`
     width: auto;
-    height: 16.25rem;
+    height: 15.25rem;
     background-color: ${({ theme }) => theme.colors['base-post']};
     border-radius: 10px;
+    border: 1px solid;
+    border-color: transparent;
     padding: 1.5rem;
     a{
         text-decoration: none;
+    }
+
+    &:hover{
+        
+        border-color: ${({ theme }) => theme.colors['base-label']};
     }
 
    
@@ -64,7 +75,6 @@ export const Card = styled.div`
         }
 
         span{
-        width: 10rem;
         color: ${({ theme }) => theme.colors['base-span']};
         font-size: 0.875rem;
         }
@@ -72,6 +82,7 @@ export const Card = styled.div`
    
     p{
         color: ${({ theme }) => theme.colors['base-text']};
+        margin-top: 1.5rem;
     }
     
 `

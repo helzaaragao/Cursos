@@ -25,25 +25,34 @@ export const InfoProfile = styled.div`
     div:first-child{
         display: flex;
         justify-content: space-between;
-        h1{
-            font-size: 1.5rem;
-            color: ${({ theme }) => theme.colors['base-title']};
-            height: 1.938rem;
-        }
-        span{
-            display: flex;
-            gap: 0.2rem;
-            font-weight: bold;
-            a{
-                color: ${({ theme }) => theme.colors['blue']};
-                text-decoration: none;
-                text-transform: uppercase;
+            h1{
+                font-size: 1.5rem;
+                color: ${({ theme }) => theme.colors['base-title']};
+                height: 1.938rem;
+            }   
+
+            span{
+                display: flex;
+                gap: 0.2rem;
+                font-weight: bold;
+
+                &:hover{
+                    border-bottom: 1px solid;
+                    border-color: ${({ theme }) => theme.colors['blue']};
+                }
+
+                a{
+                    color: ${({ theme }) => theme.colors['blue']};
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+                svg {
+                    color:${({ theme }) => theme.colors['blue']};
+                    cursor: pointer;
+                
+                }
+            
             }
-            svg {
-                color:${({ theme }) => theme.colors['blue']};
-            }
-          
-        }
         
     }
 
@@ -63,10 +72,10 @@ export const Info = styled.div`
         display: flex;
         align-items: center;
         gap: 0.3rem;
-        svg{
-        color: ${({ theme }) => theme.colors['base-label']};
+            svg{
+            color: ${({ theme }) => theme.colors['base-label']};
 
-        }
+            }
       
     }
 `

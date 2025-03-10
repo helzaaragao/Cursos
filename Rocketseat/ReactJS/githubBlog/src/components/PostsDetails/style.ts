@@ -43,6 +43,10 @@ export const PostHeader = styled.div`
             gap: 0.3rem;
             font-size: 0.75rem;
             font-weight: bold;
+            &:hover{
+                    border-bottom: 1px solid;
+                    border-color: ${({ theme }) => theme.colors['blue']};
+                }
         }
     }
 
