@@ -1,6 +1,6 @@
 import { Link, useParams, useLocation } from "react-router-dom";
 import { PostBody, PostContainer, PostHeader, PostIcones } from "./style";
-import { ArrowLineUpRight, Calendar, CaretLeft, ChatCircle, GithubLogo } from "@phosphor-icons/react";
+import { ArrowUpRight, Calendar, CaretLeft, ChatCircle, GithubLogo } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { Issue } from "../../Home.tsx";
 
@@ -19,19 +19,28 @@ export function PostsDetails(){
     const [issue, setIssue] = useState<Issue | null>(null);
     const issuesList = (location.state as LocationState)?.issuesList;
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
 
     useEffect(() => {
-        if (id && issuesList) { // Só faz a requisição se o `id` existir
-            const foundIssue = issuesList.find((issue) => issue.id === Number(id));
-            if (foundIssue) {
-                setIssue(foundIssue);
-            } else {
-                    setError("Issue não encontrada"); // Define um erro se a issue não for encontrada
-            }
-          
+        if (id && issuesList) { 
+            setLoading(true); 
+            setError(null);
+            setTimeout(() => {
+                try {
+                    const foundIssue = issuesList.find((issue) => issue.id === Number(id));
+                    if (foundIssue) {
+                        setIssue(foundIssue);
+                    } else {
+                        setError("Issue não encontrada");
+                    }
+                } catch (err) {
+                    setError("Erro ao carregar a issue");
+                } finally {
+                    setLoading(false); 
+                }
+            }, 500); 
         }
     }, [id, issuesList]);
 
@@ -51,8 +60,8 @@ export function PostsDetails(){
         <PostContainer>
             <PostHeader>
                 <div>
-                    <Link to={'/'}><CaretLeft size={18} weight="fill" />VOLTAR</Link>
-                    <Link to={issue.html_url} target="_blank">VER NO GITHUB <ArrowLineUpRight size={18} weight="bold" /></Link>
+                    <Link to={'/'}><CaretLeft size={18} weight="bold" />VOLTAR</Link>
+                    <Link to={issue.html_url} target="_blank">VER NO GITHUB <ArrowUpRight size={18} weight="bold" /></Link>
                 </div>
                 <h2>{issue.title}</h2>
                 <PostIcones>

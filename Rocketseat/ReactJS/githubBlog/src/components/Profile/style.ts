@@ -35,8 +35,9 @@ export const InfoProfile = styled.div`
                 display: flex;
                 gap: 0.2rem;
                 font-weight: bold;
+                align-items: center;
 
-                &:hover{
+                :hover{
                     border-bottom: 1px solid;
                     border-color: ${({ theme }) => theme.colors['blue']};
                 }
@@ -49,7 +50,6 @@ export const InfoProfile = styled.div`
                 svg {
                     color:${({ theme }) => theme.colors['blue']};
                     cursor: pointer;
-                
                 }
             
             }
@@ -68,14 +68,12 @@ export const Info = styled.div`
     display: flex;
     gap: 1rem;
 
-    > div{
+     div{
         display: flex;
         align-items: center;
         gap: 0.3rem;
             svg{
             color: ${({ theme }) => theme.colors['base-label']};
-
             }
-      
     }
 `

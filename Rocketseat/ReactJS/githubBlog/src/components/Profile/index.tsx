@@ -1,4 +1,4 @@
-import { GithubLogo, Buildings, Users, ArrowLineUpRight } from "@phosphor-icons/react";
+import { GithubLogo, Buildings, Users, ArrowUpRight } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { Info, InfoProfile, ProfileAvatar, ProfileImage } from "./style.ts";
 import { useEffect, useState } from "react";
@@ -70,7 +70,7 @@ export function Profile({ username }: ProfileProps) {
         <InfoProfile>  
             <div>
                 <h1>{user.name || "Nome não disponivel"}</h1>
-                <span><Link to={user.html_url} target="_blank">Github</Link><ArrowLineUpRight size={18} weight="bold" /></span>
+                <span><Link to={user.html_url} target="_blank">Github<ArrowUpRight size={18} weight="bold" /></Link></span>
             </div>
         <p>{user.bio}</p>
         <Info>
