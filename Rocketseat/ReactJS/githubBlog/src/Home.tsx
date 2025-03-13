@@ -66,11 +66,11 @@ export function Home({}){
 
     
     if (loading) {
-        return <div>Carregando...</div>; // Exibe um indicador de carregamento
+        return <div>Carregando...</div>; 
     }
 
     if (error) {
-        return <div>{error}</div>; // Exibe uma mensagem de erro
+        return <div>{error}</div>; 
     }
 
     const filteredIssues = issues.filter((issue) => {
@@ -79,8 +79,8 @@ export function Home({}){
         }
     
         const searchText = searchTerm.toLowerCase();
-        const title = issue.title || ""; // Fornece um valor padrão caso `title` seja null ou undefined
-        const body = issue.body || ""; // Fornece um valor padrão caso `body` seja null ou undefined    
+        const title = issue.title || ""; 
+        const body = issue.body || "";
         return (
             title.toLowerCase().includes(searchText) ||
             body.toLowerCase().includes(searchText)

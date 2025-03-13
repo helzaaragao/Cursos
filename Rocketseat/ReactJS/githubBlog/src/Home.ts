@@ -13,6 +13,14 @@ export const Search = styled.section`
    > div{
      display: flex;
      justify-content: space-between;
+
+     h2{
+        color: ${({ theme }) => theme.colors['base-subtitle']};
+     }
+
+     span{
+        color: ${({ theme }) => theme.colors['base-span']};
+     }
    }
 
    > input {
